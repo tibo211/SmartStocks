@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StockServices
 
 struct ContentView: View {
     var body: some View {

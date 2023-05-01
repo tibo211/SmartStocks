@@ -11,6 +11,7 @@
 		BBA3380E2A00391F0070F91E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3380D2A00391F0070F91E /* ContentView.swift */; };
 		BBA338102A0039210070F91E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBA3380F2A0039210070F91E /* Assets.xcassets */; };
 		BBA338142A0039210070F91E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBA338132A0039210070F91E /* Preview Assets.xcassets */; };
+		BBA3381D2A005E700070F91E /* StockServices in Frameworks */ = {isa = PBXBuildFile; productRef = BBA3381C2A005E700070F91E /* StockServices */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		BBA3380F2A0039210070F91E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBA338112A0039210070F91E /* SmartStocks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartStocks.entitlements; sourceTree = "<group>"; };
 		BBA338132A0039210070F91E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BBA3381A2A005E550070F91E /* StockServices */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = StockServices; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBA3381D2A005E700070F91E /* StockServices in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,8 +39,10 @@
 		BBA337FF2A00391F0070F91E = {
 			isa = PBXGroup;
 			children = (
+				BBA3381A2A005E550070F91E /* StockServices */,
 				BBA3380A2A00391F0070F91E /* SmartStocks */,
 				BBA338092A00391F0070F91E /* Products */,
+				BBA3381B2A005E700070F91E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,6 +74,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		BBA3381B2A005E700070F91E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -85,6 +97,9 @@
 			dependencies = (
 			);
 			name = SmartStocks;
+			packageProductDependencies = (
+				BBA3381C2A005E700070F91E /* StockServices */,
+			);
 			productName = SmartStocks;
 			productReference = BBA338082A00391F0070F91E /* SmartStocks.app */;
 			productType = "com.apple.product-type.application";
@@ -354,6 +369,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BBA3381C2A005E700070F91E /* StockServices */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StockServices;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BBA338002A00391F0070F91E /* Project object */;
 }
