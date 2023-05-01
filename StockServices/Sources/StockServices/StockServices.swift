@@ -1,1 +1,3 @@
-public struct StockServices {}
+public struct StockServices {
+    public static let repository: StocksRepository = DefaultStocksRepository()
+}
