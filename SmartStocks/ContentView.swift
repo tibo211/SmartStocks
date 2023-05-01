@@ -11,10 +11,15 @@ import StockServices
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Button("Subscribe to AAPL") {
+                Task {
+                    do {
+                        try await StockServices.repository.subscribe(symbol: "AAPL")
+                    } catch {
+                        print(error)
+                    }
+                }
+            }
         }
         .padding()
     }

@@ -18,20 +18,25 @@ final class WebSocketController: NSObject, URLSessionWebSocketDelegate {
         let session = URLSession(configuration: .default,
                                  delegate: self,
                                  delegateQueue: OperationQueue())
-        let socket = session.webSocketTask(with: url)
+        socket = session.webSocketTask(with: url)
         socket.resume()
+    }
+    
+    func send(message: URLSessionWebSocketTask.Message) async throws {
+        try await socket.send(message)
     }
     
     func urlSession(_ session: URLSession,
                     webSocketTask: URLSessionWebSocketTask,
                     didOpenWithProtocol protocol: String?) {
+        print("🌐 WEBSOCKET - session opened")
         Task {
             do {
                 try await ping()
 
                 while socket.state == .running {
                     let message = try await socket.receive()
-                    print(message)
+                    print("🌐 WEBSOCKET - \(message)")
                     subject.send(message)
                 }
             } catch {
@@ -44,7 +49,7 @@ final class WebSocketController: NSObject, URLSessionWebSocketDelegate {
                     webSocketTask: URLSessionWebSocketTask,
                     didCloseWith closeCode: URLSessionWebSocketTask.CloseCode,
                     reason: Data?) {
-        print("WEBSOCKET closed.")
+        print("🌐 WEBSOCKET - session closed")
     }
     
     private func ping() async throws {
@@ -53,6 +58,7 @@ final class WebSocketController: NSObject, URLSessionWebSocketDelegate {
                 if let error {
                     continuation.resume(with: .failure(error))
                 } else {
+                    print("🌐 WEBSOCKET - pong")
                     continuation.resume()
                 }
             }
