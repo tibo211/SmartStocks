@@ -37,12 +37,8 @@ struct StockList: View {
                 }
             }
         }
-        .task {
-            do {
-                try await model.loadQuotes()
-            } catch {
-                print(error)
-            }
+        .awaitAndCatch {
+            try await model.loadQuotes()
         }
         .navigationTitle("Watchlist")
     }

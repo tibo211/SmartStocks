@@ -33,12 +33,8 @@ struct StockDetailsView: View {
         }
         .navigationTitle(viewModel.company?.name ?? viewModel.symbol)
         .skeletonPlaceholder(viewModel.company == nil)
-        .task {
-            do {
-                try await viewModel.loadCompanyDetails()
-            } catch {
-                print(error)
-            }
+        .awaitAndCatch {
+            try await viewModel.loadCompanyDetails()
         }
     }
 }

@@ -46,6 +46,8 @@ final class StockListModel: ObservableObject {
                 
                 return updatedItems
             }
+            // TODO: When values received that are not the in the latest they will not be updated.
+            .throttle(for: .seconds(1), scheduler: RunLoop.main, latest: true)
             .receive(on: RunLoop.main)
             .assign(to: &$items)
     }
@@ -72,7 +74,11 @@ final class StockListModel: ObservableObject {
                           price: quote.currentPrice,
                           closePrice: quote.previousClosePrice)
             }
-        
+
+        for symbol in symbols {
+            try await stocksService.subscribe(symbol: symbol)
+        }
+
         DispatchQueue.main.async {
             self.items = items
         }
