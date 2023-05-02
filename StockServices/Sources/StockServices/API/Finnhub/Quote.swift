@@ -1,5 +1,5 @@
 //
-//  Finnhub+Quote.swift
+//  Quote.swift
 //  
 //
 //  Created by Tibor Felföldy on 2023-05-02.
@@ -25,8 +25,9 @@ public struct QuoteResult: Decodable {
 extension API.Finnhub {
     struct Quote: Request {
         typealias Result = QuoteResult
-        let endpoint = "quote"
         let symbol: String
+        
+        let endpoint = "quote"
         
         var queryItems: [URLQueryItem] {
             [URLQueryItem(name: "symbol", value: symbol)]

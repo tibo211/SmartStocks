@@ -22,11 +22,11 @@ struct StockList: View {
                 VStack(alignment: .trailing, spacing: 4) {
                     Text("\(item.price.currencyString)")
                     Text("\(item.difference.currencyString)")
-                        .font(.caption)
-                        .padding(4)
+                        .padding(2)
                         .background(color(for: item.difference))
-                        .clipShape(Capsule())
+                        .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
+                .monospacedDigit()
             }
             .padding()
             .background {
