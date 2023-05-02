@@ -10,6 +10,7 @@ import StockServices
 
 final class StockDetailsViewModel: ObservableObject {
     let symbol: String
+    let price: Double
     @Published private(set) var company: CompanyProfileResult?
     
     var logoUrl: URL? {
@@ -21,8 +22,9 @@ final class StockDetailsViewModel: ObservableObject {
     
     private let stocksService: StocksRepository
     
-    init(symbol: String, stocksService: StocksRepository = StockServices.repository) {
+    init(symbol: String, price: Double, stocksService: StocksRepository = StockServices.repository) {
         self.symbol = symbol
+        self.price = price
         self.stocksService = stocksService
     }
     

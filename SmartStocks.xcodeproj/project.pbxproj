@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BBA3380C2A00391F0070F91E /* SmartStocksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3380B2A00391F0070F91E /* SmartStocksApp.swift */; };
-		BBA3380E2A00391F0070F91E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3380D2A00391F0070F91E /* ContentView.swift */; };
 		BBA338102A0039210070F91E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBA3380F2A0039210070F91E /* Assets.xcassets */; };
 		BBA338142A0039210070F91E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBA338132A0039210070F91E /* Preview Assets.xcassets */; };
 		BBA3381D2A005E700070F91E /* StockServices in Frameworks */ = {isa = PBXBuildFile; productRef = BBA3381C2A005E700070F91E /* StockServices */; };
@@ -24,7 +23,6 @@
 /* Begin PBXFileReference section */
 		BBA338082A00391F0070F91E /* SmartStocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartStocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBA3380B2A00391F0070F91E /* SmartStocksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartStocksApp.swift; sourceTree = "<group>"; };
-		BBA3380D2A00391F0070F91E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BBA3380F2A0039210070F91E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBA338112A0039210070F91E /* SmartStocks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartStocks.entitlements; sourceTree = "<group>"; };
 		BBA338132A0039210070F91E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -75,7 +73,6 @@
 				BBA338272A00B5910070F91E /* Extensions */,
 				BBA338212A00AC430070F91E /* Scenes */,
 				BBA3380B2A00391F0070F91E /* SmartStocksApp.swift */,
-				BBA3380D2A00391F0070F91E /* ContentView.swift */,
 				BBA3380F2A0039210070F91E /* Assets.xcassets */,
 				BBA338112A0039210070F91E /* SmartStocks.entitlements */,
 				BBA338122A0039210070F91E /* Preview Content */,
@@ -220,7 +217,6 @@
 				BBA3382B2A00BBBB0070F91E /* PreviewStocksRepository.swift in Sources */,
 				BBA338242A00AC630070F91E /* StockList.swift in Sources */,
 				BBA338322A015EBE0070F91E /* StockDetailsViewModel.swift in Sources */,
-				BBA3380E2A00391F0070F91E /* ContentView.swift in Sources */,
 				BBA3380C2A00391F0070F91E /* SmartStocksApp.swift in Sources */,
 				BBA338292A00B5AA0070F91E /* Double+Extensions.swift in Sources */,
 				BBA338352A0165A60070F91E /* SkeletonPlaceholderModifier.swift in Sources */,

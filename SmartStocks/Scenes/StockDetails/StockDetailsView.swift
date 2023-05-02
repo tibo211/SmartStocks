@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StockServices
 
 struct StockDetailsView: View {
     @StateObject var viewModel: StockDetailsViewModel
@@ -26,7 +27,7 @@ struct StockDetailsView: View {
                     Image(systemName: "apple.logo")
                 }
                 
-                Text("161.95 $")
+                Text(viewModel.price.currencyString())
                     .font(.headline)
             }
         }
@@ -45,7 +46,7 @@ struct StockDetailsView: View {
 struct StockDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            StockDetailsView(viewModel: StockDetailsViewModel(symbol: "AAPL", stocksService: PreviewStocksRepository()))
+            StockDetailsView(viewModel: StockDetailsViewModel(symbol: "AAPL", price: 169.77, stocksService: PreviewStocksRepository()))
         }
     }
 }

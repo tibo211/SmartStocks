@@ -14,7 +14,7 @@ struct StockList: View {
     var body: some View {
         List(model.items) { item in
             NavigationLink {
-                StockDetailsView(viewModel: StockDetailsViewModel(symbol: item.symbol))
+                StockDetailsView(viewModel: StockDetailsViewModel(symbol: item.symbol, price: item.price))
             } label: {
                 HStack {
                     Text(item.symbol)
