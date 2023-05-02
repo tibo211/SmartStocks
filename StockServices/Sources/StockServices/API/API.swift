@@ -9,6 +9,23 @@ import Foundation
 
 enum API {
     static let finnhub = Finnhub()
+
+    private static let session: URLSession = {
+        let configuration = URLSessionConfiguration.default
+        configuration.waitsForConnectivity = true
+        return URLSession(configuration: configuration)
+    }()
+    
+    static func perform(request: URLRequest, retry: Int) async throws -> (Data, URLResponse) {
+        for _ in 0..<retry {
+            do {
+                return try await session.data(for: request)
+            } catch {
+                continue
+            }
+        }
+        return try await session.data(for: request)
+    }
 }
 
 extension API {
@@ -39,7 +56,7 @@ extension Request {
     
     func perform() async throws -> Result {
         let request = URLRequest(url: url)
-        let (data, _) = try await URLSession.shared.data(for: request)
+        let (data, _) = try await API.perform(request: request, retry: 3)
         #if DEBUG
         debug(.request, String(reflecting: self))
         #endif
