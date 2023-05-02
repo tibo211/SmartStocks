@@ -12,6 +12,7 @@ import Foundation
 
 public protocol StocksRepository {
     func subscribe(symbol: String) async throws
+    var priceUpdatePublisher: AnyPublisher<[StockPrice], Error> { get }
 }
 
 // MARK: - StocksRepository default implementation
@@ -26,7 +27,31 @@ final class DefaultStocksRepository: StocksRepository {
     }
     
     func subscribe(symbol: String) async throws {
+        print("Subscribe to \(symbol)")
         let message = #"{"type":"subscribe","symbol":"\#(symbol)"}"#
         try await socketController.send(message: .string(message))
+    }
+    
+    var priceUpdatePublisher: AnyPublisher<[StockPrice], Error> {
+        socketController.subject
+            .compactMap { message in
+                guard case let .string(value) = message,
+                      let data = value.data(using: .utf8) else {
+                    return nil
+                }
+
+                let result = try? JSONDecoder()
+                    .decode(StockPriceResults.self, from: data)
+
+                guard let stocks = result?.data else {
+                    return nil
+                }
+                let stockPrices = Dictionary(grouping: stocks, by: \.symbol)
+                    .compactMapValues(\.last)
+                    .values
+                    
+                return Array(stockPrices)
+            }
+            .eraseToAnyPublisher()
     }
 }
