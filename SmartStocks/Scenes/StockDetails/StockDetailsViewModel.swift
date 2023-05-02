@@ -20,17 +20,15 @@ final class StockDetailsViewModel: ObservableObject {
         return URL(string: link)
     }
     
-    private let stocksService: StocksRepository
-    
-    init(symbol: String, price: Double, stocksService: StocksRepository = StockServices.repository) {
+    init(symbol: String, price: Double) {
         self.symbol = symbol
         self.price = price
-        self.stocksService = stocksService
     }
     
     func loadCompanyDetails() async throws {
-        let companyProfile = try await stocksService.companyProfile(symbol: symbol)
-        
+        let companyProfile = try await ServiceProvider.stocksService
+            .companyProfile(symbol: symbol)
+
         DispatchQueue.main.async {
             self.company = companyProfile
         }

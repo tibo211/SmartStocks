@@ -46,7 +46,6 @@ final class WebSocketController: NSObject, URLSessionWebSocketDelegate {
 
                 while socket.state == .running {
                     let message = try await socket.receive()
-                    debug(.websocket, "\(message)")
                     subject.send(message)
                 }
             } catch {

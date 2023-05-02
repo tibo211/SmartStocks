@@ -12,28 +12,30 @@ struct StockList: View {
     private let gridItem = GridItem(.adaptive(minimum: 240), alignment: .top)
     
     var body: some View {
-        List(model.items) { item in
-            NavigationLink {
-                StockDetailsView(viewModel: StockDetailsViewModel(symbol: item.symbol, price: item.price))
-            } label: {
-                HStack {
-                    Text(item.symbol)
-                        .font(.headline)
-                    
-                    Spacer()
-                    
-                    VStack(alignment: .trailing, spacing: 2) {
-                        Text("\(item.price.currencyString())")
-                        Text("\(item.difference.currencyString(showPlus: true))")
-                            .font(.caption).bold()
-                            .foregroundColor(color(for: item.difference))
-                            .padding(2)
-                            .background {
-                                RoundedRectangle(cornerRadius: 4)
-                                    .fill(.thinMaterial)
-                            }
+        List(model.symbols, id: \.self) { symbol in
+            if let item = model.items[symbol] {
+                NavigationLink {
+                    StockDetailsView(viewModel: StockDetailsViewModel(symbol: item.symbol, price: item.price))
+                } label: {
+                    HStack {
+                        Text(item.symbol)
+                            .font(.headline)
+                        
+                        Spacer()
+                        
+                        VStack(alignment: .trailing, spacing: 2) {
+                            Text("\(item.price.currencyString())")
+                            Text("\(item.difference.currencyString(showPlus: true))")
+                                .font(.caption).bold()
+                                .foregroundColor(color(for: item.difference))
+                                .padding(2)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 4)
+                                        .fill(.thinMaterial)
+                                }
+                        }
+                        .monospaced()
                     }
-                    .monospaced()
                 }
             }
         }
@@ -58,7 +60,7 @@ struct StockList: View {
 struct StockList_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            StockList(model: StockListModel(stocksService: PreviewStocksRepository()))
+            StockList(model: StockListModel())
         }
     }
 }

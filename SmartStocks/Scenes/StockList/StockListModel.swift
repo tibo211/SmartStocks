@@ -22,32 +22,22 @@ struct StockItem: Identifiable {
 }
 
 final class StockListModel: ObservableObject {
-    @Published var items = [StockItem]()
+    @Published var items = [String: StockItem]()
     
     let symbols = ["AAPL"]
-    private let stocksService: StocksRepository
+    private let stocksService = ServiceProvider.stocksService
     
-    init(stocksService: StocksRepository = StockServices.repository) {
-        self.stocksService = stocksService
-        stocksService.priceUpdatePublisher
-            .combineLatest($items) { updates, items in
-                var updatedItems = items
-                
-                for update in updates {
-                    let i = items.firstIndex(where: { $0.symbol == update.symbol })
-                    if let i {
-                        updatedItems[i].price = update.price
-                    }
-                }
-                
-                return updatedItems
+    private var subscriptions = Set<AnyCancellable>()
+    
+    init() {
+        stocksService.priceUpdatePublisher.sink { [unowned self] updates in
+            for (symbol, price) in updates {
+                items[symbol]?.price = price
             }
-            // TODO: When values received that are not the in the latest they will not be updated.
-            .throttle(for: .seconds(1), scheduler: RunLoop.main, latest: true)
-            .receive(on: RunLoop.main)
-            .assign(to: &$items)
+        }
+        .store(in: &subscriptions)
     }
-    
+
     func loadQuotes() async throws {
         let quotes = try await withThrowingTaskGroup(of: QuoteResult.self) { group in
             for symbol in symbols {
@@ -74,7 +64,8 @@ final class StockListModel: ObservableObject {
         try await stocksService.subscribe(symbols: Set(symbols))
 
         DispatchQueue.main.async {
-            self.items = items
+            self.items = Dictionary(grouping: items, by: \.symbol)
+                .compactMapValues(\.last)
         }
     }
 }

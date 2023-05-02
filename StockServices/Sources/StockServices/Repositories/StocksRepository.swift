@@ -14,7 +14,7 @@ public protocol StocksRepository {
     func quote(symbol: String) async throws -> QuoteResult
     func companyProfile(symbol: String) async throws -> CompanyProfileResult
     func subscribe(symbols: Set<String>) async throws
-    var priceUpdatePublisher: AnyPublisher<[StockPrice], Never> { get }
+    var priceUpdatePublisher: AnyPublisher<[String:Double], Never> { get }
 }
 
 // MARK: - StocksRepository default implementation
@@ -49,9 +49,9 @@ final class DefaultStocksRepository: StocksRepository {
         }
     }
     
-    var priceUpdatePublisher: AnyPublisher<[StockPrice], Never> {
+    var priceUpdatePublisher: AnyPublisher<[String:Double], Never> {
         socketController.subject
-            .compactMap { message in
+            .compactMap { message -> [StockPrice]? in
                 guard case let .string(value) = message,
                       let data = value.data(using: .utf8) else {
                     return nil
@@ -60,15 +60,28 @@ final class DefaultStocksRepository: StocksRepository {
                 let result = try? JSONDecoder()
                     .decode(StockPriceResults.self, from: data)
 
-                guard let stocks = result?.data else {
-                    return nil
-                }
-                let stockPrices = Dictionary(grouping: stocks, by: \.symbol)
-                    .compactMapValues(\.last)
-                    .values
-                    
-                return Array(stockPrices)
+                return result?.data
             }
+            // Group symbols with their latest price.
+            .map { Dictionary(grouping: $0, by: \.symbol).compactMapValues(\.last?.price) }
+            // Combine with the last results to ensure that throttle
+            // doesn't skip updates for symbols that didn't come with the latest publishing.
+            .scan(([String:Double](), [String:Double]())) { lastResults, updates in
+                let last = lastResults.1
+                var newResults = last
+                for update in updates {
+                    newResults[update.key] = update.value
+                }
+                return (last, newResults)
+            }
+            .map { $1 }
+            .removeDuplicates()
+            // Throttle to ensure that the main thread is not overloaded
+            // with too many events being processed at once.
+            .throttle(for: .seconds(1), scheduler: RunLoop.main, latest: true)
+            .handleEvents(receiveOutput: { updates in
+                debug(.websocket, "price updates: \(updates)")
+            })
             .eraseToAnyPublisher()
     }
 }

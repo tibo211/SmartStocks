@@ -28,15 +28,12 @@ final class PreviewStocksRepository: StocksRepository {
     
     func subscribe(symbols: Set<String>) async throws {}
     
-    var priceUpdatePublisher: AnyPublisher<[StockPrice], Never> {
+    var priceUpdatePublisher: AnyPublisher<[String:Double], Never> {
         Timer.publish(every: 2, on: RunLoop.main, in: .default)
             .autoconnect()
             .map { _ in
-                self.initalQuotes.map { symbol, quote in
-                    StockPrice(
-                        symbol: symbol,
-                        price: quote.previousClosePrice + .random(in: -0.1...0.1)
-                    )
+                self.initalQuotes.mapValues {
+                    $0.previousClosePrice + .random(in: -0.1...0.1)
                 }
             }
             .eraseToAnyPublisher()

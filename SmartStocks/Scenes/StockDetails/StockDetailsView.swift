@@ -42,7 +42,7 @@ struct StockDetailsView: View {
 struct StockDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            StockDetailsView(viewModel: StockDetailsViewModel(symbol: "AAPL", price: 169.77, stocksService: PreviewStocksRepository()))
+            StockDetailsView(viewModel: StockDetailsViewModel(symbol: "AAPL", price: 169.77))
         }
     }
 }
