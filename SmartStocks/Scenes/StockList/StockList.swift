@@ -20,13 +20,13 @@ struct StockList: View {
                 Spacer()
                 
                 VStack(alignment: .trailing, spacing: 4) {
-                    Text("\(item.price.currencyString)")
-                    Text("\(item.difference.currencyString)")
+                    Text("\(item.price.currencyString())")
+                    Text("\(item.difference.currencyString(showPlus: true))")
                         .padding(2)
-                        .background(color(for: item.difference))
+                        .background(color(for: item.difference).gradient)
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
-                .monospacedDigit()
+                .monospaced()
             }
             .padding()
             .background {
@@ -48,9 +48,9 @@ struct StockList: View {
         case 0:
             return .clear
         case let x where x < 0:
-            return .red
+            return .red.opacity(0.8)
         default:
-            return .green
+            return .green.opacity(0.8)
         }
     }
 }

@@ -8,10 +8,11 @@
 import Foundation
 
 extension Double {
-    var currencyString: String {
+    func currencyString(showPlus: Bool = false) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.currencySymbol = ""
+        formatter.positivePrefix = showPlus ? "+" : ""
         return formatter.string(from: NSNumber(value: self)) ?? "0"
     }
 }
