@@ -26,9 +26,9 @@ final class PreviewStocksRepository: StocksRepository {
         profiles[symbol] ?? CompanyProfileResult(name: "Unknown", logo: "", industry: "Technology")
     }
     
-    func subscribe(symbol: String) async throws {}
+    func subscribe(symbols: Set<String>) async throws {}
     
-    var priceUpdatePublisher: AnyPublisher<[StockPrice], Error> {
+    var priceUpdatePublisher: AnyPublisher<[StockPrice], Never> {
         Timer.publish(every: 2, on: RunLoop.main, in: .default)
             .autoconnect()
             .map { _ in
@@ -39,7 +39,6 @@ final class PreviewStocksRepository: StocksRepository {
                     )
                 }
             }
-            .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
     }
 }

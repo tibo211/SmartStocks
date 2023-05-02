@@ -13,18 +13,22 @@ import Foundation
 public protocol StocksRepository {
     func quote(symbol: String) async throws -> QuoteResult
     func companyProfile(symbol: String) async throws -> CompanyProfileResult
-    func subscribe(symbol: String) async throws
-    var priceUpdatePublisher: AnyPublisher<[StockPrice], Error> { get }
+    func subscribe(symbols: Set<String>) async throws
+    var priceUpdatePublisher: AnyPublisher<[StockPrice], Never> { get }
 }
 
 // MARK: - StocksRepository default implementation
 
 final class DefaultStocksRepository: StocksRepository {
-    private let socketController: WebSocketController
+    private var subscribedSymbols = Set<String>()
     
-    init() {
-        socketController = WebSocketController(url: API.finnhub.webSocketURL)
-    }
+    private lazy var socketController: WebSocketController = {
+        WebSocketController(url: API.finnhub.webSocketURL) { [unowned self] in
+            Task {
+                try await subscribe(symbols: subscribedSymbols)
+            }
+        }
+    }()
     
     func quote(symbol: String) async throws -> QuoteResult {
         try await API.Finnhub.Quote(symbol: symbol).perform()
@@ -34,13 +38,18 @@ final class DefaultStocksRepository: StocksRepository {
         try await API.Finnhub.CompanyProfile(symbol: symbol).perform()
     }
     
-    func subscribe(symbol: String) async throws {
-        print("Subscribe to \(symbol)")
-        let message = #"{"type":"subscribe","symbol":"\#(symbol)"}"#
-        try await socketController.send(message: .string(message))
+    func subscribe(symbols: Set<String>) async throws {
+        for symbol in symbols {
+            let message = #"{"type":"subscribe","symbol":"\#(symbol)"}"#
+            debug(.websocket, "send: \(message)")
+            try await socketController.send(message: .string(message))
+        }
+        DispatchQueue.main.async {
+            self.subscribedSymbols = symbols
+        }
     }
     
-    var priceUpdatePublisher: AnyPublisher<[StockPrice], Error> {
+    var priceUpdatePublisher: AnyPublisher<[StockPrice], Never> {
         socketController.subject
             .compactMap { message in
                 guard case let .string(value) = message,

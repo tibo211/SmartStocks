@@ -9,13 +9,23 @@ import Foundation
 import Combine
 
 final class WebSocketController: NSObject, URLSessionWebSocketDelegate {
-    let subject = PassthroughSubject<URLSessionWebSocketTask.Message, Error>()
+    let subject = PassthroughSubject<URLSessionWebSocketTask.Message, Never>()
 
+    private let url: URL
+    private let sessionRestarted: () -> Void
     private var socket: URLSessionWebSocketTask!
 
-    init(url: URL) {
+    init(url: URL, sessionRestarted: @escaping () -> Void) {
+        self.url = url
+        self.sessionRestarted = sessionRestarted
         super.init()
-        let session = URLSession(configuration: .default,
+        startSession()
+    }
+    
+    func startSession() {
+        let configuration = URLSessionConfiguration.default
+        configuration.waitsForConnectivity = true
+        let session = URLSession(configuration: configuration,
                                  delegate: self,
                                  delegateQueue: OperationQueue())
         socket = session.webSocketTask(with: url)
@@ -40,7 +50,10 @@ final class WebSocketController: NSObject, URLSessionWebSocketDelegate {
                     subject.send(message)
                 }
             } catch {
-                subject.send(completion: .failure(error))
+                debug(.websocket, "ERROR: \(error.localizedDescription)")
+                startSession()
+                sessionRestarted()
+                debug(.websocket, "session restarted")
             }
         }
     }

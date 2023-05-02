@@ -30,10 +30,6 @@ final class StockListModel: ObservableObject {
     init(stocksService: StocksRepository = StockServices.repository) {
         self.stocksService = stocksService
         stocksService.priceUpdatePublisher
-            .catch { error in
-                print(error)
-                return Just([StockPrice]())
-            }
             .combineLatest($items) { updates, items in
                 var updatedItems = items
                 
@@ -75,9 +71,7 @@ final class StockListModel: ObservableObject {
                           closePrice: quote.previousClosePrice)
             }
 
-        for symbol in symbols {
-            try await stocksService.subscribe(symbol: symbol)
-        }
+        try await stocksService.subscribe(symbols: Set(symbols))
 
         DispatchQueue.main.async {
             self.items = items
