@@ -36,6 +36,9 @@ struct StockDetailsView: View {
         .awaitAndCatch {
             try await viewModel.loadCompanyDetails()
         }
+        .onReceive(ServiceProvider.stocksService.priceUpdatePublisher) { updates in
+            viewModel.priceUpdates(updates)
+        }
     }
 }
 

@@ -10,7 +10,7 @@ import StockServices
 
 final class StockDetailsViewModel: ObservableObject {
     let symbol: String
-    let price: Double
+    @Published private(set) var price: Double
     @Published private(set) var company: CompanyProfileResult?
     
     var logoUrl: URL? {
@@ -31,6 +31,12 @@ final class StockDetailsViewModel: ObservableObject {
 
         DispatchQueue.main.async {
             self.company = companyProfile
+        }
+    }
+    
+    func priceUpdates(_ updates: [String: Double]) {
+        if let newPrice = updates[symbol] {
+            price = newPrice
         }
     }
 }

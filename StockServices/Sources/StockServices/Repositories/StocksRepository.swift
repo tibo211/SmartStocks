@@ -49,7 +49,7 @@ final class DefaultStocksRepository: StocksRepository {
         }
     }
     
-    var priceUpdatePublisher: AnyPublisher<[String:Double], Never> {
+    lazy var priceUpdatePublisher: AnyPublisher<[String:Double], Never> = {
         socketController.subject
             .compactMap { message -> [StockPrice]? in
                 guard case let .string(value) = message,
@@ -82,6 +82,7 @@ final class DefaultStocksRepository: StocksRepository {
             .handleEvents(receiveOutput: { updates in
                 debug(.websocket, "price updates: \(updates)")
             })
+            .share()
             .eraseToAnyPublisher()
-    }
+    }()
 }
