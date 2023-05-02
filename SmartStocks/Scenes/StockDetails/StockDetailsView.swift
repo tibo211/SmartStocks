@@ -17,24 +17,21 @@ struct StockDetailsView: View {
                     VStack(alignment: .leading) {
                         Text(viewModel.symbol)
                             .font(.headline)
-                        Text("Technology")
+                        Text(viewModel.company?.industry ?? "unknown")
                             .foregroundColor(.secondary)
                     }
                     
                     Spacer()
-                    
-                    AsyncImage(url: viewModel.logoUrl) { image in
-                        image
-                    } placeholder: {
-                        Image(systemName: "apple.logo")
-                    }
+                    // TODO: Workaround for getting svg instead of png.
+                    Image(systemName: "apple.logo")
                 }
                 
                 Text("161.95 $")
                     .font(.headline)
             }
         }
-        .navigationTitle("Apple Inc.")
+        .navigationTitle(viewModel.company?.name ?? viewModel.symbol)
+        .skeletonPlaceholder(viewModel.company == nil)
         .task {
             do {
                 try await viewModel.loadCompanyDetails()

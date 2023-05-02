@@ -10,10 +10,10 @@ import StockServices
 
 final class StockDetailsViewModel: ObservableObject {
     let symbol: String
-    @Published private(set) var companyProfile: CompanyProfileResult?
+    @Published private(set) var company: CompanyProfileResult?
     
     var logoUrl: URL? {
-        guard let link = companyProfile?.logo else {
+        guard let link = company?.logo else {
             return nil
         }
         return URL(string: link)
@@ -30,7 +30,7 @@ final class StockDetailsViewModel: ObservableObject {
         let companyProfile = try await stocksService.companyProfile(symbol: symbol)
         
         DispatchQueue.main.async {
-            self.companyProfile = companyProfile
+            self.company = companyProfile
         }
     }
 }
