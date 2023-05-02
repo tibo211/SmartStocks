@@ -40,6 +40,9 @@ extension Request {
     func perform() async throws -> Result {
         let request = URLRequest(url: url)
         let (data, _) = try await URLSession.shared.data(for: request)
+        #if DEBUG
+        debug(.request, String(reflecting: self))
+        #endif
         return try JSONDecoder().decode(Result.self, from: data)
     }
 }
