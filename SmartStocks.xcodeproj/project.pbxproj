@@ -18,6 +18,7 @@
 		BBA338302A01453F0070F91E /* StockDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3382F2A01453F0070F91E /* StockDetailsView.swift */; };
 		BBA338322A015EBE0070F91E /* StockDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338312A015EBE0070F91E /* StockDetailsViewModel.swift */; };
 		BBA338352A0165A60070F91E /* SkeletonPlaceholderModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338342A0165A60070F91E /* SkeletonPlaceholderModifier.swift */; };
+		BBA338372A016E6A0070F91E /* AwaitAndCatchModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338362A016E6A0070F91E /* AwaitAndCatchModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		BBA3382F2A01453F0070F91E /* StockDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailsView.swift; sourceTree = "<group>"; };
 		BBA338312A015EBE0070F91E /* StockDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailsViewModel.swift; sourceTree = "<group>"; };
 		BBA338342A0165A60070F91E /* SkeletonPlaceholderModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonPlaceholderModifier.swift; sourceTree = "<group>"; };
+		BBA338362A016E6A0070F91E /* AwaitAndCatchModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwaitAndCatchModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				BBA338342A0165A60070F91E /* SkeletonPlaceholderModifier.swift */,
+				BBA338362A016E6A0070F91E /* AwaitAndCatchModifier.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				BBA338322A015EBE0070F91E /* StockDetailsViewModel.swift in Sources */,
 				BBA3380C2A00391F0070F91E /* SmartStocksApp.swift in Sources */,
 				BBA338292A00B5AA0070F91E /* Double+Extensions.swift in Sources */,
+				BBA338372A016E6A0070F91E /* AwaitAndCatchModifier.swift in Sources */,
 				BBA338352A0165A60070F91E /* SkeletonPlaceholderModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
