@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct StockList: View {
-    @ObservedObject private var model = StockListModel()
-    
+    @ObservedObject var model: StockListModel
     private let gridItem = GridItem(.adaptive(minimum: 240), alignment: .top)
     
     var body: some View {
@@ -34,7 +33,6 @@ struct StockList: View {
                 RoundedRectangle(cornerRadius: 16)
                     .fill(.thinMaterial)
             }
-            .padding()
         }
         .task {
             do {
@@ -59,6 +57,6 @@ struct StockList: View {
 
 struct StockList_Previews: PreviewProvider {
     static var previews: some View {
-        StockList()
+        StockList(model: StockListModel(stocksService: PreviewStocksRepository()))
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import StockServices
+import Combine
 
 struct StockItem: Identifiable {
     let symbol: String
@@ -28,13 +29,32 @@ final class StockListModel: ObservableObject {
     
     init(stocksService: StocksRepository = StockServices.repository) {
         self.stocksService = stocksService
+        stocksService.priceUpdatePublisher
+            .catch { error in
+                print(error)
+                return Just([StockPrice]())
+            }
+            .combineLatest($items) { updates, items in
+                var updatedItems = items
+                
+                for update in updates {
+                    let i = items.firstIndex(where: { $0.symbol == update.symbol })
+                    if let i {
+                        updatedItems[i].price = update.price
+                    }
+                }
+                
+                return updatedItems
+            }
+            .receive(on: RunLoop.main)
+            .assign(to: &$items)
     }
     
     func loadQuotes() async throws {
         let quotes = try await withThrowingTaskGroup(of: QuoteResult.self) { group in
             for symbol in symbols {
-                group.addTask {
-                    try await StockServices.repository.quote(symbol: symbol)
+                group.addTask { [self] in
+                    try await stocksService.quote(symbol: symbol)
                 }
             }
             

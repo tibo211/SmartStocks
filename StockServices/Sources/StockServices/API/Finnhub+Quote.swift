@@ -15,6 +15,11 @@ public struct QuoteResult: Decodable {
         case currentPrice = "c"
         case previousClosePrice = "pc"
     }
+    
+    public init(currentPrice: Double, previousClosePrice: Double) {
+        self.currentPrice = currentPrice
+        self.previousClosePrice = previousClosePrice
+    }
 }
 
 extension API.Finnhub {

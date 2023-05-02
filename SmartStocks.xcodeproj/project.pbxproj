@@ -15,6 +15,7 @@
 		BBA338242A00AC630070F91E /* StockList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338232A00AC630070F91E /* StockList.swift */; };
 		BBA338262A00AC7F0070F91E /* StockListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338252A00AC7F0070F91E /* StockListModel.swift */; };
 		BBA338292A00B5AA0070F91E /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338282A00B5AA0070F91E /* Double+Extensions.swift */; };
+		BBA3382B2A00BBBB0070F91E /* PreviewStocksRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3382A2A00BBBB0070F91E /* PreviewStocksRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		BBA338232A00AC630070F91E /* StockList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockList.swift; sourceTree = "<group>"; };
 		BBA338252A00AC7F0070F91E /* StockListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListModel.swift; sourceTree = "<group>"; };
 		BBA338282A00B5AA0070F91E /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		BBA3382A2A00BBBB0070F91E /* PreviewStocksRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewStocksRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				BBA338132A0039210070F91E /* Preview Assets.xcassets */,
+				BBA3382A2A00BBBB0070F91E /* PreviewStocksRepository.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBA338262A00AC7F0070F91E /* StockListModel.swift in Sources */,
+				BBA3382B2A00BBBB0070F91E /* PreviewStocksRepository.swift in Sources */,
 				BBA338242A00AC630070F91E /* StockList.swift in Sources */,
 				BBA3380E2A00391F0070F91E /* ContentView.swift in Sources */,
 				BBA3380C2A00391F0070F91E /* SmartStocksApp.swift in Sources */,
@@ -315,7 +319,7 @@
 				CODE_SIGN_ENTITLEMENTS = SmartStocks/SmartStocks.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SmartStocks/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "SmartStocks/Preview\\ Content";
 				DEVELOPMENT_TEAM = QA23EPZ5C9;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -353,7 +357,7 @@
 				CODE_SIGN_ENTITLEMENTS = SmartStocks/SmartStocks.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SmartStocks/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "SmartStocks/Preview\\ Content";
 				DEVELOPMENT_TEAM = QA23EPZ5C9;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;

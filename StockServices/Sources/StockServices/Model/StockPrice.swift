@@ -19,4 +19,9 @@ public struct StockPrice: Decodable {
         case symbol = "s"
         case price = "p"
     }
+    
+    public init(symbol: String, price: Double) {
+        self.symbol = symbol
+        self.price = price
+    }
 }
