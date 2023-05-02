@@ -11,7 +11,9 @@ import SwiftUI
 struct SmartStocksApp: App {
     var body: some Scene {
         WindowGroup {
-            StockList(model: StockListModel())
+            NavigationView {
+                StockList(model: StockListModel())
+            }
         }
     }
 }

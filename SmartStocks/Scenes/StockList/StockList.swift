@@ -13,26 +13,29 @@ struct StockList: View {
     
     var body: some View {
         List(model.items) { item in
-            HStack {
-                Text(item.symbol)
-                    .font(.headline)
-                
-                Spacer()
-                
-                VStack(alignment: .trailing, spacing: 2) {
-                    Text("\(item.price.currencyString())")
-                    Text("\(item.difference.currencyString(showPlus: true))")
-                        .font(.caption).bold()
-                        .foregroundColor(color(for: item.difference))
-                        .padding(2)
-                        .background {
-                            RoundedRectangle(cornerRadius: 4)
-                                .fill(.thinMaterial)
-                        }
+            NavigationLink {
+                StockDetailsView()
+            } label: {
+                HStack {
+                    Text(item.symbol)
+                        .font(.headline)
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .trailing, spacing: 2) {
+                        Text("\(item.price.currencyString())")
+                        Text("\(item.difference.currencyString(showPlus: true))")
+                            .font(.caption).bold()
+                            .foregroundColor(color(for: item.difference))
+                            .padding(2)
+                            .background {
+                                RoundedRectangle(cornerRadius: 4)
+                                    .fill(.thinMaterial)
+                            }
+                    }
+                    .monospaced()
                 }
-                .monospaced()
             }
-            .padding(8)
         }
         .task {
             do {
@@ -41,6 +44,7 @@ struct StockList: View {
                 print(error)
             }
         }
+        .navigationTitle("Watchlist")
     }
     
     private func color(for difference: Double) -> Color {
