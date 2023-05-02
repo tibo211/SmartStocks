@@ -11,6 +11,7 @@ import Foundation
 // MARK: - StocksRepository protocol
 
 public protocol StocksRepository {
+    func quote(symbol: String) async throws -> QuoteResult
     func subscribe(symbol: String) async throws
     var priceUpdatePublisher: AnyPublisher<[StockPrice], Error> { get }
 }
@@ -21,9 +22,11 @@ final class DefaultStocksRepository: StocksRepository {
     private let socketController: WebSocketController
     
     init() {
-        let apiKey = "ch844ahr01qhapm5k2tgch844ahr01qhapm5k2u0"
-        let url = URL(string: "wss://ws.finnhub.io?token=\(apiKey)")!
-        socketController = WebSocketController(url: url)
+        socketController = WebSocketController(url: API.finnhub.webSocketURL)
+    }
+    
+    func quote(symbol: String) async throws -> QuoteResult {
+        try await API.Finnhub.Quote(symbol: symbol).perform()
     }
     
     func subscribe(symbol: String) async throws {
