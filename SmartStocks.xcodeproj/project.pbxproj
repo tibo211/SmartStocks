@@ -21,6 +21,8 @@
 		BBA338372A016E6A0070F91E /* AwaitAndCatchModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338362A016E6A0070F91E /* AwaitAndCatchModifier.swift */; };
 		BBA338392A019BF40070F91E /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338382A019BF40070F91E /* ServiceProvider.swift */; };
 		BBA3383B2A019D130070F91E /* ProcessInfo+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3383A2A019D130070F91E /* ProcessInfo+Extensions.swift */; };
+		BBA338532A01CE330070F91E /* CompanyImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338522A01CE330070F91E /* CompanyImageView.swift */; };
+		BBA338552A01CFC10070F91E /* SwiftSVG in Frameworks */ = {isa = PBXBuildFile; productRef = BBA338542A01CFC10070F91E /* SwiftSVG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,7 @@
 		BBA338362A016E6A0070F91E /* AwaitAndCatchModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwaitAndCatchModifier.swift; sourceTree = "<group>"; };
 		BBA338382A019BF40070F91E /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		BBA3383A2A019D130070F91E /* ProcessInfo+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+Extensions.swift"; sourceTree = "<group>"; };
+		BBA338522A01CE330070F91E /* CompanyImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +51,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBA3381D2A005E700070F91E /* StockServices in Frameworks */,
+				BBA338552A01CFC10070F91E /* SwiftSVG in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +137,7 @@
 		BBA3382E2A0145290070F91E /* StockDetails */ = {
 			isa = PBXGroup;
 			children = (
+				BBA338562A01D2240070F91E /* Views */,
 				BBA3382F2A01453F0070F91E /* StockDetailsView.swift */,
 				BBA338312A015EBE0070F91E /* StockDetailsViewModel.swift */,
 			);
@@ -146,6 +151,14 @@
 				BBA338362A016E6A0070F91E /* AwaitAndCatchModifier.swift */,
 			);
 			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
+		BBA338562A01D2240070F91E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BBA338522A01CE330070F91E /* CompanyImageView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +179,7 @@
 			name = SmartStocks;
 			packageProductDependencies = (
 				BBA3381C2A005E700070F91E /* StockServices */,
+				BBA338542A01CFC10070F91E /* SwiftSVG */,
 			);
 			productName = SmartStocks;
 			productReference = BBA338082A00391F0070F91E /* SmartStocks.app */;
@@ -195,6 +209,9 @@
 				Base,
 			);
 			mainGroup = BBA337FF2A00391F0070F91E;
+			packageReferences = (
+				BBA338512A01CE140070F91E /* XCRemoteSwiftPackageReference "SwiftSVG" */,
+			);
 			productRefGroup = BBA338092A00391F0070F91E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -227,6 +244,7 @@
 				BBA3382B2A00BBBB0070F91E /* PreviewStocksRepository.swift in Sources */,
 				BBA338242A00AC630070F91E /* StockList.swift in Sources */,
 				BBA338322A015EBE0070F91E /* StockDetailsViewModel.swift in Sources */,
+				BBA338532A01CE330070F91E /* CompanyImageView.swift in Sources */,
 				BBA3380C2A00391F0070F91E /* SmartStocksApp.swift in Sources */,
 				BBA338292A00B5AA0070F91E /* Double+Extensions.swift in Sources */,
 				BBA3383B2A019D130070F91E /* ProcessInfo+Extensions.swift in Sources */,
@@ -446,10 +464,26 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		BBA338512A01CE140070F91E /* XCRemoteSwiftPackageReference "SwiftSVG" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mchoe/SwiftSVG";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		BBA3381C2A005E700070F91E /* StockServices */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = StockServices;
+		};
+		BBA338542A01CFC10070F91E /* SwiftSVG */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBA338512A01CE140070F91E /* XCRemoteSwiftPackageReference "SwiftSVG" */;
+			productName = SwiftSVG;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

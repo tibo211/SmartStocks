@@ -23,8 +23,8 @@ struct StockDetailsView: View {
                     }
                     
                     Spacer()
-                    // TODO: Workaround for getting svg instead of png.
-                    Image(systemName: "apple.logo")
+
+                    CompanyImageView(url: viewModel.logoUrl)
                 }
                 
                 Text(viewModel.price.currencyString())
@@ -44,7 +44,7 @@ struct StockDetailsView: View {
 
 struct StockDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             StockDetailsView(viewModel: StockDetailsViewModel(symbol: "AAPL", price: 169.77))
         }
     }
