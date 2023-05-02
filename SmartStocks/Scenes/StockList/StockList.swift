@@ -15,24 +15,24 @@ struct StockList: View {
         List(model.items) { item in
             HStack {
                 Text(item.symbol)
-                    .font(.title)
+                    .font(.headline)
                 
                 Spacer()
                 
-                VStack(alignment: .trailing, spacing: 4) {
+                VStack(alignment: .trailing, spacing: 2) {
                     Text("\(item.price.currencyString())")
                     Text("\(item.difference.currencyString(showPlus: true))")
+                        .font(.caption).bold()
+                        .foregroundColor(color(for: item.difference))
                         .padding(2)
-                        .background(color(for: item.difference).gradient)
-                        .clipShape(RoundedRectangle(cornerRadius: 4))
+                        .background {
+                            RoundedRectangle(cornerRadius: 4)
+                                .fill(.thinMaterial)
+                        }
                 }
                 .monospaced()
             }
-            .padding()
-            .background {
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(.thinMaterial)
-            }
+            .padding(8)
         }
         .task {
             do {
@@ -48,9 +48,9 @@ struct StockList: View {
         case 0:
             return .clear
         case let x where x < 0:
-            return .red.opacity(0.8)
+            return .red
         default:
-            return .green.opacity(0.8)
+            return .green
         }
     }
 }
