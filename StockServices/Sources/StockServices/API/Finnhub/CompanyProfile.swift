@@ -7,20 +7,26 @@
 
 import Foundation
 
-struct CompanyProfileResult: Decodable {
-    let name: String
-    let logo: String
-    let industry: String
+public struct CompanyProfileResult: Decodable {
+    public let name: String
+    public let logo: String
+    public let industry: String
     
     enum CodingKeys: String, CodingKey {
         case name
         case logo
         case industry = "finnhubIndustry"
     }
+    
+    public init(name: String, logo: String, industry: String) {
+        self.name = name
+        self.logo = logo
+        self.industry = industry
+    }
 }
 
 extension API.Finnhub {
-    public struct Profile2: Request {
+    public struct CompanyProfile: Request {
         typealias Result = CompanyProfileResult
         let symbol: String
         

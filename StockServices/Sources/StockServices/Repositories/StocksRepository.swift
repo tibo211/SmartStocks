@@ -12,6 +12,7 @@ import Foundation
 
 public protocol StocksRepository {
     func quote(symbol: String) async throws -> QuoteResult
+    func companyProfile(symbol: String) async throws -> CompanyProfileResult
     func subscribe(symbol: String) async throws
     var priceUpdatePublisher: AnyPublisher<[StockPrice], Error> { get }
 }
@@ -27,6 +28,10 @@ final class DefaultStocksRepository: StocksRepository {
     
     func quote(symbol: String) async throws -> QuoteResult {
         try await API.Finnhub.Quote(symbol: symbol).perform()
+    }
+    
+    func companyProfile(symbol: String) async throws -> CompanyProfileResult {
+        try await API.Finnhub.CompanyProfile(symbol: symbol).perform()
     }
     
     func subscribe(symbol: String) async throws {
