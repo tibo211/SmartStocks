@@ -14,7 +14,7 @@ struct StockList: View {
     var body: some View {
         List(model.items) { item in
             NavigationLink {
-                StockDetailsView()
+                StockDetailsView(viewModel: StockDetailsViewModel(symbol: item.symbol))
             } label: {
                 HStack {
                     Text(item.symbol)
@@ -61,6 +61,8 @@ struct StockList: View {
 
 struct StockList_Previews: PreviewProvider {
     static var previews: some View {
-        StockList(model: StockListModel(stocksService: PreviewStocksRepository()))
+        NavigationView {
+            StockList(model: StockListModel(stocksService: PreviewStocksRepository()))
+        }
     }
 }
