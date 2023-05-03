@@ -79,14 +79,13 @@
 		BBA3380A2A00391F0070F91E /* SmartStocks */ = {
 			isa = PBXGroup;
 			children = (
+				BBA338112A0039210070F91E /* SmartStocks.entitlements */,
+				BBA338572A02C68E0070F91E /* App */,
 				BBA338332A0165930070F91E /* ViewModifiers */,
 				BBA338272A00B5910070F91E /* Extensions */,
 				BBA338212A00AC430070F91E /* Scenes */,
-				BBA3380B2A00391F0070F91E /* SmartStocksApp.swift */,
 				BBA3380F2A0039210070F91E /* Assets.xcassets */,
-				BBA338112A0039210070F91E /* SmartStocks.entitlements */,
 				BBA338122A0039210070F91E /* Preview Content */,
-				BBA338382A019BF40070F91E /* ServiceProvider.swift */,
 			);
 			path = SmartStocks;
 			sourceTree = "<group>";
@@ -159,6 +158,15 @@
 				BBA338522A01CE330070F91E /* CompanyImageView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		BBA338572A02C68E0070F91E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BBA338382A019BF40070F91E /* ServiceProvider.swift */,
+				BBA3380B2A00391F0070F91E /* SmartStocksApp.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

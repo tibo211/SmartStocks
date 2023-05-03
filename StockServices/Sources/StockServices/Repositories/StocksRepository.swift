@@ -11,6 +11,7 @@ import Foundation
 // MARK: - StocksRepository protocol
 
 public protocol StocksRepository {
+    func symbolLookup(query: String) async throws -> [SymbolResult]
     func quote(symbol: String) async throws -> QuoteResult
     func companyProfile(symbol: String) async throws -> CompanyProfileResult
     func subscribe(symbols: Set<String>) async throws
@@ -29,6 +30,10 @@ final class DefaultStocksRepository: StocksRepository {
             }
         }
     }()
+    
+    func symbolLookup(query: String) async throws -> [SymbolResult] {
+        try await API.Finnhub.SymbolLookup(query: query).perform().result
+    }
     
     func quote(symbol: String) async throws -> QuoteResult {
         try await API.Finnhub.Quote(symbol: symbol).perform()

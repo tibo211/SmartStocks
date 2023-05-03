@@ -18,6 +18,13 @@ final class PreviewStocksRepository: StocksRepository {
         "AAPL": CompanyProfileResult(name: "Apple Inc.", logo: "https://static.finnhub.io/logo/87cb30d8-80df-11ea-8951-00000000092a.png", industry: "Technology")
     ]
     
+    func symbolLookup(query: String) async throws -> [SymbolResult] {
+        if let (key, profile) = profiles.first(where: { $0.key.starts(with: query) }) {
+            return [SymbolResult(description: profile.name, symbol: key)]
+        }
+        return []
+    }
+    
     func quote(symbol: String) async throws -> QuoteResult {
         initalQuotes[symbol] ?? QuoteResult(currentPrice: .random(in: 10...100), previousClosePrice: .random(in: 10...100))
     }

@@ -44,9 +44,12 @@ protocol Request {
 
     var endpoint: String { get }
     var queryItems: [URLQueryItem] { get }
+    var retry: Int { get }
 }
 
 extension Request {
+    var retry: Int { 3 }
+
     var url: URL {
         var components = URLComponents(string: API.finnhub.basePath + endpoint)!
         let apiKeyQueryItem = URLQueryItem(name: "token", value: API.finnhub.apiKey)
@@ -56,7 +59,7 @@ extension Request {
     
     func perform() async throws -> Result {
         let request = URLRequest(url: url)
-        let (data, _) = try await API.perform(request: request, retry: 3)
+        let (data, _) = try await API.perform(request: request, retry: retry)
         #if DEBUG
         debug(.request, String(reflecting: self))
         #endif
