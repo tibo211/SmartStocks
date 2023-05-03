@@ -12,7 +12,7 @@ struct SmartStocksApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                StockList(model: StockListModel())
+                WatchlistView(model: WatchlistViewModel())
             }
         }
     }

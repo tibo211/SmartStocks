@@ -1,5 +1,5 @@
 //
-//  StockList.swift
+//  WatchlistView.swift
 //  SmartStocks
 //
 //  Created by Tibor Felföldy on 2023-05-02.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct StockList: View {
-    @ObservedObject var model: StockListModel
+struct WatchlistView: View {
+    @ObservedObject var model: WatchlistViewModel
     private let gridItem = GridItem(.adaptive(minimum: 240), alignment: .top)
     
     var body: some View {
@@ -60,7 +60,7 @@ struct StockList: View {
 struct StockList_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            StockList(model: StockListModel())
+            WatchlistView(model: WatchlistViewModel())
         }
     }
 }

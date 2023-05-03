@@ -1,5 +1,5 @@
 //
-//  StockListModel.swift
+//  WatchlistViewModel.swift
 //  SmartStocks
 //
 //  Created by Tibor Felföldy on 2023-05-02.
@@ -21,7 +21,7 @@ struct StockItem: Identifiable {
     }
 }
 
-final class StockListModel: ObservableObject {
+final class WatchlistViewModel: ObservableObject {
     @Published var items = [String: StockItem]()
     
     let symbols = ["AAPL"]
