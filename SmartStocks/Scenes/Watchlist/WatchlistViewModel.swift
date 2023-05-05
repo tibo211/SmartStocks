@@ -42,27 +42,24 @@ final class WatchlistViewModel: ObservableObject {
 
     func loadQuotes() async throws {
         guard !isLoaded else { return }
-        let quotes = try await withThrowingTaskGroup(of: QuoteResult.self) { group in
+        let items = try await withThrowingTaskGroup(of: StockItem.self) { group in
             for symbol in symbols {
                 group.addTask {
-                    try await ServiceProvider.stocksService.quote(symbol: symbol)
+                    let quote = try await ServiceProvider.stocksService
+                        .quote(symbol: symbol)
+                    return StockItem(symbol: symbol,
+                                     price: quote.currentPrice,
+                                     closePrice: quote.previousClosePrice)
                 }
             }
             
-            var quotes = [QuoteResult]()
+            var quotes = [StockItem]()
             quotes.reserveCapacity(symbols.count)
             for try await quote in group {
                 quotes.append(quote)
             }
             return quotes
         }
-        
-        let items = zip(symbols, quotes)
-            .map { symbol, quote in
-                StockItem(symbol: symbol,
-                          price: quote.currentPrice,
-                          closePrice: quote.previousClosePrice)
-            }
 
         try await stocksService.subscribe(symbols: Set(symbols))
 

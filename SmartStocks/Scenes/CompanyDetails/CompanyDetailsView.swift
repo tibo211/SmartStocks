@@ -7,6 +7,7 @@
 
 import SwiftUI
 import StockServices
+import Charts
 
 struct CompanyDetailsView: View {
     @StateObject var viewModel: CompanyDetailsViewModel
@@ -39,6 +40,14 @@ struct CompanyDetailsView: View {
                         .foregroundColor(.secondary)
                         .font(.caption)
                 }
+                
+                if let candles = viewModel.chartData {
+                    Chart(candles, id: \.time) { candle in
+                        LineMark(x: .value("date", candle.time),
+                                 y: .value("price", candle.closePrice))
+                    }
+                    .chartYScale(domain: .automatic(includesZero: false))
+                }
             }
         }
         #if os(macOS)
@@ -46,6 +55,8 @@ struct CompanyDetailsView: View {
         #endif
         .navigationTitle(viewModel.symbol)
         .skeletonPlaceholder(viewModel.company == nil)
+        .animation(.default, value: viewModel.company == nil)
+        .animation(.default, value: viewModel.chartData == nil)
         .awaitAndCatch {
             try await viewModel.loadCompanyDetails()
             try await viewModel.loadChart()
