@@ -16,14 +16,15 @@ final class SearchController: ObservableObject {
     init() {
         $query
             .filter { !$0.isEmpty }
-            .debounce(for: 0.8, scheduler: DispatchQueue.global())
+            .debounce(for: 0.5, scheduler: DispatchQueue.global())
             .removeDuplicates()
             .map { query in
                 Future<[SymbolResult], Never> { promise in
                     Task {
                         let results = try await ServiceProvider.stocksService
                             .symbolLookup(query: query)
-                        promise(.success(results))
+                        let filterred = results.filter { !$0.symbol.contains(".") }
+                        promise(.success(filterred))
                     }
                 }
             }

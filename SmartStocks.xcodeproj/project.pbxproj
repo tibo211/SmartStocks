@@ -25,6 +25,7 @@
 		BBA338552A01CFC10070F91E /* SwiftSVG in Frameworks */ = {isa = PBXBuildFile; productRef = BBA338542A01CFC10070F91E /* SwiftSVG */; };
 		BBA3385C2A02CBB40070F91E /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3385B2A02CBB40070F91E /* SearchController.swift */; };
 		BBBC188E2A048AAD00ACE767 /* WatchlistRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBC188D2A048AAD00ACE767 /* WatchlistRow.swift */; };
+		BBBC18902A048C0000ACE767 /* SearchlistRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBC188F2A048C0000ACE767 /* SearchlistRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		BBA338522A01CE330070F91E /* CompanyImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyImageView.swift; sourceTree = "<group>"; };
 		BBA3385B2A02CBB40070F91E /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		BBBC188D2A048AAD00ACE767 /* WatchlistRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistRow.swift; sourceTree = "<group>"; };
+		BBBC188F2A048C0000ACE767 /* SearchlistRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchlistRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				BBBC188D2A048AAD00ACE767 /* WatchlistRow.swift */,
+				BBBC188F2A048C0000ACE767 /* SearchlistRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				BBA338292A00B5AA0070F91E /* Double+Extensions.swift in Sources */,
 				BBA3383B2A019D130070F91E /* ProcessInfo+Extensions.swift in Sources */,
 				BBA338372A016E6A0070F91E /* AwaitAndCatchModifier.swift in Sources */,
+				BBBC18902A048C0000ACE767 /* SearchlistRow.swift in Sources */,
 				BBA338352A0165A60070F91E /* SkeletonPlaceholderModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
