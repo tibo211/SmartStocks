@@ -33,6 +33,10 @@ final class PreviewStocksRepository: StocksRepository {
         profiles[symbol] ?? CompanyProfileResult(name: "Unknown", logo: "", industry: "Technology", currency: "", exchange: "")
     }
     
+    func stockCandles(symbol: String, from: Date, to: Date) async throws -> CandleResult {
+        CandleResult(closes: [], timestamps: [])
+    }
+    
     func subscribe(symbols: Set<String>) async throws {}
     
     var priceUpdatePublisher: AnyPublisher<[String:Double], Never> {

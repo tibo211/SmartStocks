@@ -14,6 +14,7 @@ public protocol StocksRepository {
     func symbolLookup(query: String) async throws -> [SymbolResult]
     func quote(symbol: String) async throws -> QuoteResult
     func companyProfile(symbol: String) async throws -> CompanyProfileResult
+    func stockCandles(symbol: String, from: Date, to: Date) async throws -> CandleResult
     func subscribe(symbols: Set<String>) async throws
     var priceUpdatePublisher: AnyPublisher<[String:Double], Never> { get }
 }
@@ -41,6 +42,10 @@ final class DefaultStocksRepository: StocksRepository {
     
     func companyProfile(symbol: String) async throws -> CompanyProfileResult {
         try await API.Finnhub.CompanyProfile(symbol: symbol).perform()
+    }
+    
+    func stockCandles(symbol: String, from: Date, to: Date) async throws -> CandleResult {
+        try await API.Finnhub.StockCandles(symbol: symbol, from: from, to: to).perform()
     }
     
     func subscribe(symbols: Set<String>) async throws {

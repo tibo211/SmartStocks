@@ -48,6 +48,7 @@ struct CompanyDetailsView: View {
         .skeletonPlaceholder(viewModel.company == nil)
         .awaitAndCatch {
             try await viewModel.loadCompanyDetails()
+            try await viewModel.loadChart()
         }
         .onReceive(ServiceProvider.stocksService.priceUpdatePublisher) { updates in
             viewModel.priceUpdates(updates)
