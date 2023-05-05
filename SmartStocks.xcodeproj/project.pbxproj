@@ -23,6 +23,7 @@
 		BBA3383B2A019D130070F91E /* ProcessInfo+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3383A2A019D130070F91E /* ProcessInfo+Extensions.swift */; };
 		BBA338532A01CE330070F91E /* CompanyImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338522A01CE330070F91E /* CompanyImageView.swift */; };
 		BBA338552A01CFC10070F91E /* SwiftSVG in Frameworks */ = {isa = PBXBuildFile; productRef = BBA338542A01CFC10070F91E /* SwiftSVG */; };
+		BBA3385C2A02CBB40070F91E /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3385B2A02CBB40070F91E /* SearchController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		BBA338382A019BF40070F91E /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		BBA3383A2A019D130070F91E /* ProcessInfo+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+Extensions.swift"; sourceTree = "<group>"; };
 		BBA338522A01CE330070F91E /* CompanyImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyImageView.swift; sourceTree = "<group>"; };
+		BBA3385B2A02CBB40070F91E /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				BBA338212A00AC430070F91E /* Scenes */,
 				BBA3380F2A0039210070F91E /* Assets.xcassets */,
 				BBA338122A0039210070F91E /* Preview Content */,
+				BBA3385B2A02CBB40070F91E /* SearchController.swift */,
 			);
 			path = SmartStocks;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				BBA338302A01453F0070F91E /* StockDetailsView.swift in Sources */,
 				BBA338392A019BF40070F91E /* ServiceProvider.swift in Sources */,
 				BBA338262A00AC7F0070F91E /* WatchlistViewModel.swift in Sources */,
+				BBA3385C2A02CBB40070F91E /* SearchController.swift in Sources */,
 				BBA3382B2A00BBBB0070F91E /* PreviewStocksRepository.swift in Sources */,
 				BBA338242A00AC630070F91E /* WatchlistView.swift in Sources */,
 				BBA338322A015EBE0070F91E /* StockDetailsViewModel.swift in Sources */,
