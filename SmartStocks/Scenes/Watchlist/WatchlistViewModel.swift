@@ -22,7 +22,7 @@ struct StockItem: Identifiable {
 }
 
 final class WatchlistViewModel: ObservableObject {
-    @Published var symbols = ["AAPL"]
+    @Published var symbols: [String]
     @Published var items = [String: StockItem]()
 
     private let stocksService = ServiceProvider.stocksService
@@ -30,6 +30,8 @@ final class WatchlistViewModel: ObservableObject {
     private var subscriptions = Set<AnyCancellable>()
     
     init() {
+        symbols = StockServices.user.symbols
+        
         stocksService.priceUpdatePublisher.sink { [unowned self] updates in
             for (symbol, price) in updates {
                 items[symbol]?.price = price
@@ -86,6 +88,7 @@ final class WatchlistViewModel: ObservableObject {
         DispatchQueue.main.async {
             self.items[symbol] = stockItem
             self.symbols.append(symbol)
+            StockServices.user.symbols = self.symbols
         }
     }
 }

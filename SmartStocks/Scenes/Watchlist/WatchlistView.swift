@@ -46,10 +46,6 @@ struct WatchlistView: View {
             }
             
             if isSearching {
-                Rectangle()
-                    .fill(.thinMaterial)
-                    .background(ignoresSafeAreaEdges: .all)
-                
                 List(searchController.searchResults, id: \.symbol) { result in
                     HStack {
                         VStack(alignment: .leading) {
