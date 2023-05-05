@@ -15,8 +15,8 @@
 		BBA338262A00AC7F0070F91E /* WatchlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338252A00AC7F0070F91E /* WatchlistViewModel.swift */; };
 		BBA338292A00B5AA0070F91E /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338282A00B5AA0070F91E /* Double+Extensions.swift */; };
 		BBA3382B2A00BBBB0070F91E /* PreviewStocksRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3382A2A00BBBB0070F91E /* PreviewStocksRepository.swift */; };
-		BBA338302A01453F0070F91E /* StockDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3382F2A01453F0070F91E /* StockDetailsView.swift */; };
-		BBA338322A015EBE0070F91E /* StockDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338312A015EBE0070F91E /* StockDetailsViewModel.swift */; };
+		BBA338302A01453F0070F91E /* CompanyDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3382F2A01453F0070F91E /* CompanyDetailsView.swift */; };
+		BBA338322A015EBE0070F91E /* CompanyDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338312A015EBE0070F91E /* CompanyDetailsViewModel.swift */; };
 		BBA338352A0165A60070F91E /* SkeletonPlaceholderModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338342A0165A60070F91E /* SkeletonPlaceholderModifier.swift */; };
 		BBA338372A016E6A0070F91E /* AwaitAndCatchModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338362A016E6A0070F91E /* AwaitAndCatchModifier.swift */; };
 		BBA338392A019BF40070F91E /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338382A019BF40070F91E /* ServiceProvider.swift */; };
@@ -39,8 +39,8 @@
 		BBA338252A00AC7F0070F91E /* WatchlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewModel.swift; sourceTree = "<group>"; };
 		BBA338282A00B5AA0070F91E /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		BBA3382A2A00BBBB0070F91E /* PreviewStocksRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewStocksRepository.swift; sourceTree = "<group>"; };
-		BBA3382F2A01453F0070F91E /* StockDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailsView.swift; sourceTree = "<group>"; };
-		BBA338312A015EBE0070F91E /* StockDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailsViewModel.swift; sourceTree = "<group>"; };
+		BBA3382F2A01453F0070F91E /* CompanyDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailsView.swift; sourceTree = "<group>"; };
+		BBA338312A015EBE0070F91E /* CompanyDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailsViewModel.swift; sourceTree = "<group>"; };
 		BBA338342A0165A60070F91E /* SkeletonPlaceholderModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonPlaceholderModifier.swift; sourceTree = "<group>"; };
 		BBA338362A016E6A0070F91E /* AwaitAndCatchModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwaitAndCatchModifier.swift; sourceTree = "<group>"; };
 		BBA338382A019BF40070F91E /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				BBA338222A00AC4B0070F91E /* Watchlist */,
-				BBA3382E2A0145290070F91E /* StockDetails */,
+				BBA3382E2A0145290070F91E /* CompanyDetails */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -141,14 +141,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		BBA3382E2A0145290070F91E /* StockDetails */ = {
+		BBA3382E2A0145290070F91E /* CompanyDetails */ = {
 			isa = PBXGroup;
 			children = (
 				BBA338562A01D2240070F91E /* Views */,
-				BBA3382F2A01453F0070F91E /* StockDetailsView.swift */,
-				BBA338312A015EBE0070F91E /* StockDetailsViewModel.swift */,
+				BBA3382F2A01453F0070F91E /* CompanyDetailsView.swift */,
+				BBA338312A015EBE0070F91E /* CompanyDetailsViewModel.swift */,
 			);
-			path = StockDetails;
+			path = CompanyDetails;
 			sourceTree = "<group>";
 		};
 		BBA338332A0165930070F91E /* ViewModifiers */ = {
@@ -263,14 +263,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBA338302A01453F0070F91E /* StockDetailsView.swift in Sources */,
+				BBA338302A01453F0070F91E /* CompanyDetailsView.swift in Sources */,
 				BBA338392A019BF40070F91E /* ServiceProvider.swift in Sources */,
 				BBA338262A00AC7F0070F91E /* WatchlistViewModel.swift in Sources */,
 				BBA3385C2A02CBB40070F91E /* SearchController.swift in Sources */,
 				BBBC188E2A048AAD00ACE767 /* WatchlistRow.swift in Sources */,
 				BBA3382B2A00BBBB0070F91E /* PreviewStocksRepository.swift in Sources */,
 				BBA338242A00AC630070F91E /* WatchlistView.swift in Sources */,
-				BBA338322A015EBE0070F91E /* StockDetailsViewModel.swift in Sources */,
+				BBA338322A015EBE0070F91E /* CompanyDetailsViewModel.swift in Sources */,
 				BBA338532A01CE330070F91E /* CompanyImageView.swift in Sources */,
 				BBA3380C2A00391F0070F91E /* SmartStocksApp.swift in Sources */,
 				BBA338292A00B5AA0070F91E /* Double+Extensions.swift in Sources */,

@@ -11,17 +11,23 @@ public struct CompanyProfileResult: Decodable {
     public let name: String
     public let logo: String
     public let industry: String
+    public let currency: String
+    public let exchange: String
     
     enum CodingKeys: String, CodingKey {
         case name
         case logo
         case industry = "finnhubIndustry"
+        case currency
+        case exchange
     }
     
-    public init(name: String, logo: String, industry: String) {
+    public init(name: String, logo: String, industry: String, currency: String, exchange: String) {
         self.name = name
         self.logo = logo
         self.industry = industry
+        self.currency = currency
+        self.exchange = exchange
     }
 }
 

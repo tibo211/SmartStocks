@@ -11,17 +11,12 @@ struct StockPriceResults: Decodable {
     let data: [StockPrice]
 }
 
-public struct StockPrice: Decodable {
-    public let symbol: String
-    public let price: Double
+ struct StockPrice: Decodable {
+    let symbol: String
+    let price: Double
     
     enum CodingKeys: String, CodingKey {
         case symbol = "s"
         case price = "p"
-    }
-    
-    public init(symbol: String, price: Double) {
-        self.symbol = symbol
-        self.price = price
     }
 }

@@ -28,7 +28,7 @@ struct WatchlistView: View {
                     ForEach(model.symbols, id: \.self) { symbol in
                         if let item = model.items[symbol] {
                             NavigationLink {
-                                StockDetailsView(viewModel: StockDetailsViewModel(symbol: item.symbol, price: item.price))
+                                CompanyDetailsView(viewModel: CompanyDetailsViewModel(symbol: item.symbol, price: item.price))
                             } label: {
                                 WatchlistRow(item: item)
                             }
