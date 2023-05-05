@@ -15,34 +15,37 @@ struct WatchlistView: View {
     
     var body: some View {
         ZStack {
-            List(model.symbols, id: \.self) { symbol in
-                if let item = model.items[symbol] {
-                    NavigationLink {
-                        StockDetailsView(viewModel: StockDetailsViewModel(symbol: item.symbol, price: item.price))
-                    } label: {
-                        HStack {
-                            Text(item.symbol)
-                                .font(.headline)
-                            
-                            Spacer()
-                            
-                            VStack(alignment: .trailing, spacing: 2) {
-                                Text("\(item.price.currencyString())")
-                                Text("\(item.difference.currencyString(showPlus: true))")
-                                    .font(.caption).bold()
-                                    .foregroundColor(color(for: item.difference))
-                                    .padding(2)
-                                    .background {
-                                        RoundedRectangle(cornerRadius: 4)
-                                            .fill(.thinMaterial)
-                                    }
+            List {
+                ForEach(model.symbols, id: \.self) { symbol in
+                    if let item = model.items[symbol] {
+                        NavigationLink {
+                            StockDetailsView(viewModel: StockDetailsViewModel(symbol: item.symbol, price: item.price))
+                        } label: {
+                            HStack {
+                                Text(item.symbol)
+                                    .font(.headline)
+                                
+                                Spacer()
+                                
+                                VStack(alignment: .trailing, spacing: 2) {
+                                    Text("\(item.price.currencyString())")
+                                    Text("\(item.difference.currencyString(showPlus: true))")
+                                        .font(.caption).bold()
+                                        .foregroundColor(color(for: item.difference))
+                                        .padding(2)
+                                        .background {
+                                            RoundedRectangle(cornerRadius: 4)
+                                                .fill(.thinMaterial)
+                                        }
+                                }
+                                .monospaced()
                             }
-                            .monospaced()
                         }
+                    } else {
+                        Text(symbol)
                     }
-                } else {
-                    Text(symbol)
                 }
+                .onDelete(perform: model.delete)
             }
             
             if isSearching {

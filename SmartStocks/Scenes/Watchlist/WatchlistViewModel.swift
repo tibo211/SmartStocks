@@ -22,8 +22,8 @@ struct StockItem: Identifiable {
 }
 
 final class WatchlistViewModel: ObservableObject {
-    @Published var symbols: [String]
-    @Published var items = [String: StockItem]()
+    @Published private(set) var symbols: [String]
+    @Published private(set) var items = [String: StockItem]()
 
     private let stocksService = ServiceProvider.stocksService
     private var isLoaded = false
@@ -44,8 +44,8 @@ final class WatchlistViewModel: ObservableObject {
         guard !isLoaded else { return }
         let quotes = try await withThrowingTaskGroup(of: QuoteResult.self) { group in
             for symbol in symbols {
-                group.addTask { [self] in
-                    try await stocksService.quote(symbol: symbol)
+                group.addTask {
+                    try await ServiceProvider.stocksService.quote(symbol: symbol)
                 }
             }
             
@@ -64,7 +64,7 @@ final class WatchlistViewModel: ObservableObject {
                           closePrice: quote.previousClosePrice)
             }
 
-        try await subscribeForPriceUpdates(symbols: Set(symbols))
+        try await stocksService.subscribe(symbols: Set(symbols))
 
         DispatchQueue.main.async {
             self.items = Dictionary(grouping: items, by: \.symbol)
@@ -73,22 +73,24 @@ final class WatchlistViewModel: ObservableObject {
         }
     }
     
-    func subscribeForPriceUpdates(symbols: Set<String>) async throws {
-        try await stocksService.subscribe(symbols: symbols)
-    }
-    
     func add(symbol: String) async throws {
+        if symbols.contains(symbol) { return }
         let quote = try await stocksService.quote(symbol: symbol)
         let stockItem = StockItem(symbol: symbol,
                                   price: quote.currentPrice,
                                   closePrice: quote.previousClosePrice)
         
-        try await subscribeForPriceUpdates(symbols: Set(symbols + [symbol]))
+        try await stocksService.subscribe(symbols: Set(symbols + [symbol]))
         
         DispatchQueue.main.async {
             self.items[symbol] = stockItem
             self.symbols.append(symbol)
             StockServices.user.symbols = self.symbols
         }
+    }
+    
+    func delete(at offset: IndexSet) {
+        symbols.remove(atOffsets: offset)
+        StockServices.user.symbols = symbols
     }
 }
