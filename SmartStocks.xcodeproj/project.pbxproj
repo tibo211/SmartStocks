@@ -24,6 +24,7 @@
 		BBA338532A01CE330070F91E /* CompanyImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338522A01CE330070F91E /* CompanyImageView.swift */; };
 		BBA338552A01CFC10070F91E /* SwiftSVG in Frameworks */ = {isa = PBXBuildFile; productRef = BBA338542A01CFC10070F91E /* SwiftSVG */; };
 		BBA3385C2A02CBB40070F91E /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3385B2A02CBB40070F91E /* SearchController.swift */; };
+		BBBC188E2A048AAD00ACE767 /* WatchlistRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBC188D2A048AAD00ACE767 /* WatchlistRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		BBA3383A2A019D130070F91E /* ProcessInfo+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+Extensions.swift"; sourceTree = "<group>"; };
 		BBA338522A01CE330070F91E /* CompanyImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyImageView.swift; sourceTree = "<group>"; };
 		BBA3385B2A02CBB40070F91E /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		BBBC188D2A048AAD00ACE767 /* WatchlistRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		BBA338222A00AC4B0070F91E /* Watchlist */ = {
 			isa = PBXGroup;
 			children = (
+				BBBC188C2A048A9B00ACE767 /* Views */,
 				BBA338232A00AC630070F91E /* WatchlistView.swift */,
 				BBA338252A00AC7F0070F91E /* WatchlistViewModel.swift */,
 			);
@@ -170,6 +173,14 @@
 				BBA3380B2A00391F0070F91E /* SmartStocksApp.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		BBBC188C2A048A9B00ACE767 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BBBC188D2A048AAD00ACE767 /* WatchlistRow.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +264,7 @@
 				BBA338392A019BF40070F91E /* ServiceProvider.swift in Sources */,
 				BBA338262A00AC7F0070F91E /* WatchlistViewModel.swift in Sources */,
 				BBA3385C2A02CBB40070F91E /* SearchController.swift in Sources */,
+				BBBC188E2A048AAD00ACE767 /* WatchlistRow.swift in Sources */,
 				BBA3382B2A00BBBB0070F91E /* PreviewStocksRepository.swift in Sources */,
 				BBA338242A00AC630070F91E /* WatchlistView.swift in Sources */,
 				BBA338322A015EBE0070F91E /* StockDetailsViewModel.swift in Sources */,

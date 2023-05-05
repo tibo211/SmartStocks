@@ -21,25 +21,7 @@ struct WatchlistView: View {
                         NavigationLink {
                             StockDetailsView(viewModel: StockDetailsViewModel(symbol: item.symbol, price: item.price))
                         } label: {
-                            HStack {
-                                Text(item.symbol)
-                                    .font(.headline)
-                                
-                                Spacer()
-                                
-                                VStack(alignment: .trailing, spacing: 2) {
-                                    Text("\(item.price.currencyString())")
-                                    Text("\(item.difference.currencyString(showPlus: true))")
-                                        .font(.caption).bold()
-                                        .foregroundColor(color(for: item.difference))
-                                        .padding(2)
-                                        .background {
-                                            RoundedRectangle(cornerRadius: 4)
-                                                .fill(.thinMaterial)
-                                        }
-                                }
-                                .monospaced()
-                            }
+                            WatchlistRow(item: item)
                         }
                     } else {
                         Text(symbol)
@@ -77,17 +59,6 @@ struct WatchlistView: View {
             try await model.loadQuotes()
         }
         .navigationTitle("Watchlist")
-    }
-    
-    private func color(for difference: Double) -> Color {
-        switch difference {
-        case 0:
-            return .clear
-        case let x where x < 0:
-            return .red
-        default:
-            return .green
-        }
     }
 }
 
