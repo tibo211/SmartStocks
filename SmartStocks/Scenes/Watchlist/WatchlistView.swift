@@ -17,10 +17,16 @@ struct WatchlistView: View {
     var body: some View {
         ZStack {
             if isSearching {
-                List(searchController.searchResults, id: \.symbol) { result in
-                    SearchlistRow(item: result) {
-                        Task.redirectError($error) {
-                            try await model.add(symbol: result.symbol)
+                if searchController.query.isEmpty {
+                    Text("Search for a symbol you want to add to watchlist.")
+                        .multilineTextAlignment(.center)
+                        .padding()
+                } else {
+                    List(searchController.searchResults, id: \.symbol) { result in
+                        SearchlistRow(item: result) {
+                            Task.redirectError($error) {
+                                try await model.add(symbol: result.symbol)
+                            }
                         }
                     }
                 }

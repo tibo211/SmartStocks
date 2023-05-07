@@ -53,6 +53,7 @@ struct CompanyDetailsView: View {
         #if os(macOS)
         .padding()
         #endif
+        .setContentBackground()
         .navigationTitle(viewModel.symbol)
         .skeletonPlaceholder(viewModel.company == nil)
         .animation(.default, value: viewModel.company == nil)
