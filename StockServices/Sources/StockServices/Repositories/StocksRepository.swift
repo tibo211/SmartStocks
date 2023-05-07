@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import API
 
 // MARK: - StocksRepository protocol
 
@@ -24,8 +25,12 @@ public protocol StocksRepository {
 final class DefaultStocksRepository: StocksRepository {
     private var subscribedSymbols = Set<String>()
     
+    init() {
+        API.Finnhub.APIKey = StockServices.user.finnhubAPIKey
+    }
+    
     private lazy var socketController: WebSocketController = {
-        WebSocketController(url: API.finnhub.webSocketURL) { [unowned self] in
+        WebSocketController(url: API.Finnhub.webSocketURL) { [unowned self] in
             Task {
                 try await subscribe(symbols: subscribedSymbols)
             }

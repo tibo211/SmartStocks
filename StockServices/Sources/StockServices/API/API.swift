@@ -6,38 +6,7 @@
 //
 
 import Foundation
-
-enum API {
-    static let finnhub = Finnhub()
-
-    private static let session: URLSession = {
-        let configuration = URLSessionConfiguration.default
-        configuration.waitsForConnectivity = true
-        return URLSession(configuration: configuration)
-    }()
-    
-    static func perform(request: URLRequest, retry: Int) async throws -> (Data, URLResponse) {
-        for _ in 0..<retry {
-            do {
-                return try await session.data(for: request)
-            } catch {
-                continue
-            }
-        }
-        return try await session.data(for: request)
-    }
-}
-
-extension API {
-    struct Finnhub {
-        static var APIKey: String { StockServices.user.finnhubAPIKey }
-        fileprivate let basePath = "https://finnhub.io/api/v1/"
-        
-        var webSocketURL: URL {
-            URL(string: "wss://ws.finnhub.io?token=\(Finnhub.APIKey)")!
-        }
-    }
-}
+import API
 
 protocol Request {
     associatedtype Result: Decodable
@@ -51,7 +20,7 @@ extension Request {
     var retry: Int { 3 }
 
     var url: URL {
-        var components = URLComponents(string: API.finnhub.basePath + endpoint)!
+        var components = URLComponents(string: API.Finnhub.basePath + endpoint)!
         let apiKeyQueryItem = URLQueryItem(name: "token", value: API.Finnhub.APIKey)
         components.queryItems = queryItems + [apiKeyQueryItem]
         return components.url!

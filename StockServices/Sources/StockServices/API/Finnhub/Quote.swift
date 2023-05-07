@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import API
 
 public struct QuoteResult: Decodable {
     public let currentPrice: Double

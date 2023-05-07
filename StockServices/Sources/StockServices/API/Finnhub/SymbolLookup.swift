@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import API
 
 struct SymbolLookupResult: Decodable {
     let result: [SymbolResult]

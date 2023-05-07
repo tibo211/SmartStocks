@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import API
 
 public struct CompanyProfileResult: Decodable {
     public let name: String

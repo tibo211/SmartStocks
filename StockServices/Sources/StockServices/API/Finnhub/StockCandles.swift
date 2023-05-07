@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import API
 
 public struct CandleResult: Decodable {
     public let closes: [Double]
