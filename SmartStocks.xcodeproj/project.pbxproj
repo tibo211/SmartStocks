@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB8752F22A07F34A00F523E1 /* ErrorAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8752F12A07F34A00F523E1 /* ErrorAlertModifier.swift */; };
+		BB8752F42A07F4AB00F523E1 /* Binding+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8752F32A07F4AB00F523E1 /* Binding+Extensions.swift */; };
+		BB8752F62A07F64E00F523E1 /* Task+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8752F52A07F64E00F523E1 /* Task+Extensions.swift */; };
+		BB8752F82A07FA1800F523E1 /* AwaitAndCatchModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8752F72A07FA1800F523E1 /* AwaitAndCatchModifier.swift */; };
 		BBA3380C2A00391F0070F91E /* SmartStocksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3380B2A00391F0070F91E /* SmartStocksApp.swift */; };
 		BBA338102A0039210070F91E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBA3380F2A0039210070F91E /* Assets.xcassets */; };
 		BBA338142A0039210070F91E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBA338132A0039210070F91E /* Preview Assets.xcassets */; };
@@ -18,7 +22,6 @@
 		BBA338302A01453F0070F91E /* CompanyDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3382F2A01453F0070F91E /* CompanyDetailsView.swift */; };
 		BBA338322A015EBE0070F91E /* CompanyDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338312A015EBE0070F91E /* CompanyDetailsViewModel.swift */; };
 		BBA338352A0165A60070F91E /* SkeletonPlaceholderModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338342A0165A60070F91E /* SkeletonPlaceholderModifier.swift */; };
-		BBA338372A016E6A0070F91E /* AwaitAndCatchModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338362A016E6A0070F91E /* AwaitAndCatchModifier.swift */; };
 		BBA338392A019BF40070F91E /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338382A019BF40070F91E /* ServiceProvider.swift */; };
 		BBA3383B2A019D130070F91E /* ProcessInfo+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3383A2A019D130070F91E /* ProcessInfo+Extensions.swift */; };
 		BBA338532A01CE330070F91E /* CompanyImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA338522A01CE330070F91E /* CompanyImageView.swift */; };
@@ -29,6 +32,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB8752F12A07F34A00F523E1 /* ErrorAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertModifier.swift; sourceTree = "<group>"; };
+		BB8752F32A07F4AB00F523E1 /* Binding+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extensions.swift"; sourceTree = "<group>"; };
+		BB8752F52A07F64E00F523E1 /* Task+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Extensions.swift"; sourceTree = "<group>"; };
+		BB8752F72A07FA1800F523E1 /* AwaitAndCatchModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwaitAndCatchModifier.swift; sourceTree = "<group>"; };
 		BBA338082A00391F0070F91E /* SmartStocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartStocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBA3380B2A00391F0070F91E /* SmartStocksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartStocksApp.swift; sourceTree = "<group>"; };
 		BBA3380F2A0039210070F91E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,7 +49,6 @@
 		BBA3382F2A01453F0070F91E /* CompanyDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailsView.swift; sourceTree = "<group>"; };
 		BBA338312A015EBE0070F91E /* CompanyDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailsViewModel.swift; sourceTree = "<group>"; };
 		BBA338342A0165A60070F91E /* SkeletonPlaceholderModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonPlaceholderModifier.swift; sourceTree = "<group>"; };
-		BBA338362A016E6A0070F91E /* AwaitAndCatchModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwaitAndCatchModifier.swift; sourceTree = "<group>"; };
 		BBA338382A019BF40070F91E /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		BBA3383A2A019D130070F91E /* ProcessInfo+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+Extensions.swift"; sourceTree = "<group>"; };
 		BBA338522A01CE330070F91E /* CompanyImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyImageView.swift; sourceTree = "<group>"; };
@@ -137,6 +143,8 @@
 			children = (
 				BBA338282A00B5AA0070F91E /* Double+Extensions.swift */,
 				BBA3383A2A019D130070F91E /* ProcessInfo+Extensions.swift */,
+				BB8752F32A07F4AB00F523E1 /* Binding+Extensions.swift */,
+				BB8752F52A07F64E00F523E1 /* Task+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -155,7 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				BBA338342A0165A60070F91E /* SkeletonPlaceholderModifier.swift */,
-				BBA338362A016E6A0070F91E /* AwaitAndCatchModifier.swift */,
+				BB8752F72A07FA1800F523E1 /* AwaitAndCatchModifier.swift */,
+				BB8752F12A07F34A00F523E1 /* ErrorAlertModifier.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -267,15 +276,18 @@
 				BBA338392A019BF40070F91E /* ServiceProvider.swift in Sources */,
 				BBA338262A00AC7F0070F91E /* WatchlistViewModel.swift in Sources */,
 				BBA3385C2A02CBB40070F91E /* SearchController.swift in Sources */,
+				BB8752F22A07F34A00F523E1 /* ErrorAlertModifier.swift in Sources */,
 				BBBC188E2A048AAD00ACE767 /* WatchlistRow.swift in Sources */,
 				BBA3382B2A00BBBB0070F91E /* PreviewStocksRepository.swift in Sources */,
+				BB8752F82A07FA1800F523E1 /* AwaitAndCatchModifier.swift in Sources */,
 				BBA338242A00AC630070F91E /* WatchlistView.swift in Sources */,
+				BB8752F42A07F4AB00F523E1 /* Binding+Extensions.swift in Sources */,
 				BBA338322A015EBE0070F91E /* CompanyDetailsViewModel.swift in Sources */,
+				BB8752F62A07F64E00F523E1 /* Task+Extensions.swift in Sources */,
 				BBA338532A01CE330070F91E /* CompanyImageView.swift in Sources */,
 				BBA3380C2A00391F0070F91E /* SmartStocksApp.swift in Sources */,
 				BBA338292A00B5AA0070F91E /* Double+Extensions.swift in Sources */,
 				BBA3383B2A019D130070F91E /* ProcessInfo+Extensions.swift in Sources */,
-				BBA338372A016E6A0070F91E /* AwaitAndCatchModifier.swift in Sources */,
 				BBBC18902A048C0000ACE767 /* SearchlistRow.swift in Sources */,
 				BBA338352A0165A60070F91E /* SkeletonPlaceholderModifier.swift in Sources */,
 			);

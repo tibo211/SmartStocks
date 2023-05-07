@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftSVG
 
-// SVGView doesn't hav a mac implementation.
+// SVGView doesn't have a mac implementation.
 #if os(iOS)
 private struct SVGImageView: UIViewRepresentable {
     let data: Data
@@ -19,7 +19,6 @@ private struct SVGImageView: UIViewRepresentable {
 
     func updateUIView(_ uiView: SVGView, context: Context) {}
 }
-#endif
 
 struct CompanyImageView: View {
     let url: URL?
@@ -35,21 +34,20 @@ struct CompanyImageView: View {
             } else {
                 Group {
                     if let svgData {
-                        #if os(iOS)
                         SVGImageView(data: svgData)
-                        #endif
                     } else {
                         Image(systemName: "building.2.crop.circle")
                             .resizable()
                             .scaledToFit()
                     }
                 }
-                #if os(iOS)
                 .task {
                     guard let url else { return }
-                    svgData = try? await URLSession.shared.data(from: url).0
+                    let data = try? await URLSession.shared.data(from: url).0
+                    DispatchQueue.main.async {
+                        self.svgData = data
+                    }
                 }
-                #endif
             }
         }
         // SVG's from finnhub seems to have a size of 56x56.
@@ -57,9 +55,4 @@ struct CompanyImageView: View {
         .clipShape(Circle())
     }
 }
-
-//struct CompanyImageView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CompanyImageView()
-//    }
-//}
+#endif

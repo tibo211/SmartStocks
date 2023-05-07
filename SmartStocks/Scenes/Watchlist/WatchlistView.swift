@@ -10,15 +10,16 @@ import SwiftUI
 struct WatchlistView: View {
     @ObservedObject var searchController: SearchController
     @StateObject var model: WatchlistViewModel
+
     @Environment(\.isSearching) private var isSearching
-    
+    @State private var error: Error?
     
     var body: some View {
         ZStack {
             if isSearching {
                 List(searchController.searchResults, id: \.symbol) { result in
                     SearchlistRow(item: result) {
-                        Task {
+                        Task.redirectError($error) {
                             try await model.add(symbol: result.symbol)
                         }
                     }
@@ -43,6 +44,7 @@ struct WatchlistView: View {
         .awaitAndCatch {
             try await model.loadQuotes()
         }
+        .alert(on: $error)
         .navigationTitle("Watchlist")
     }
 }

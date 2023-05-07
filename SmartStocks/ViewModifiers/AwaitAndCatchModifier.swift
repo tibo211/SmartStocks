@@ -10,29 +10,17 @@ import SwiftUI
 struct AwaitAndCatchModifier: ViewModifier {
     let block: () async throws -> Void
     
-    @State private var isErrorAlertPresented = false
     @State private var error: Error?
     @Environment(\.dismiss) private var dismiss
     
     func body(content: Content) -> some View {
         content
             .task {
-                do {
+                Task.redirectError($error) {
                     try await block()
-                } catch {
-                    DispatchQueue.main.async {
-                        self.error = error
-                        isErrorAlertPresented = true
-                    }
                 }
             }
-            .alert("Error", isPresented: $isErrorAlertPresented) {
-                Button("Ok") {
-                    dismiss()
-                }
-            } message: {
-                Text(error?.localizedDescription ?? "Something went wrong")
-            }
+            .alert(on: $error)
     }
 }
 
