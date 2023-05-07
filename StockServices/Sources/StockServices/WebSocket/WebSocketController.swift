@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import API
 
 final class WebSocketController: NSObject, URLSessionWebSocketDelegate {
     let subject = PassthroughSubject<URLSessionWebSocketTask.Message, Never>()

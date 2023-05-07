@@ -34,12 +34,12 @@ public struct CompanyProfileResult: Decodable {
 
 extension API.Finnhub {
     public struct CompanyProfile: Request {
-        typealias Result = CompanyProfileResult
+        public typealias Result = CompanyProfileResult
         let symbol: String
         
-        let endpoint = "stock/profile2"
+        public let endpoint = "stock/profile2"
         
-        var queryItems: [URLQueryItem] {
+        public var queryItems: [URLQueryItem] {
             [URLQueryItem(name: "symbol", value: symbol)]
         }
     }

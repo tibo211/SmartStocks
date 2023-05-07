@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum LogType: String {
+public enum LogType: String {
     case websocket = "🌐 WEBSOCKET"
     case request = "🌐 REQUEST"
 }
 
-func debug(_ type: LogType, _ message: String) {
+public func debug(_ type: LogType, _ message: String) {
     #if DEBUG
     print("\(type.rawValue) - \(message)")
     #endif

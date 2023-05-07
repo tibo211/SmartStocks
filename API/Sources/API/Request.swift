@@ -1,14 +1,13 @@
 //
-//  File.swift
+//  Request.swift
 //  
 //
-//  Created by Tibor Felföldy on 2023-05-02.
+//  Created by Tibor Felföldy on 2023-05-07.
 //
 
 import Foundation
-import API
 
-protocol Request {
+public protocol Request {
     associatedtype Result: Decodable
 
     var endpoint: String { get }
@@ -16,7 +15,7 @@ protocol Request {
     var retry: Int { get }
 }
 
-extension Request {
+public extension Request {
     var retry: Int { 3 }
 
     var url: URL {
@@ -29,9 +28,7 @@ extension Request {
     func perform() async throws -> Result {
         let request = URLRequest(url: url)
         let (data, _) = try await API.perform(request: request, retry: retry)
-        #if DEBUG
         debug(.request, String(reflecting: self))
-        #endif
         return try JSONDecoder().decode(Result.self, from: data)
     }
 }
