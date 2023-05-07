@@ -7,23 +7,22 @@
 
 import Foundation
 import Combine
-import API
 
-final class WebSocketController: NSObject, URLSessionWebSocketDelegate {
-    let subject = PassthroughSubject<URLSessionWebSocketTask.Message, Never>()
+public final class WebSocketController: NSObject, URLSessionWebSocketDelegate {
+    public let subject = PassthroughSubject<URLSessionWebSocketTask.Message, Never>()
 
     private let url: URL
     private let sessionRestarted: () -> Void
     private var socket: URLSessionWebSocketTask!
 
-    init(url: URL, sessionRestarted: @escaping () -> Void) {
+    public init(url: URL, sessionRestarted: @escaping () -> Void) {
         self.url = url
         self.sessionRestarted = sessionRestarted
         super.init()
         startSession()
     }
     
-    func startSession() {
+    public func startSession() {
         let configuration = URLSessionConfiguration.default
         configuration.waitsForConnectivity = true
         let session = URLSession(configuration: configuration,
@@ -33,11 +32,11 @@ final class WebSocketController: NSObject, URLSessionWebSocketDelegate {
         socket.resume()
     }
     
-    func send(message: URLSessionWebSocketTask.Message) async throws {
+    public func send(message: URLSessionWebSocketTask.Message) async throws {
         try await socket.send(message)
     }
     
-    func urlSession(_ session: URLSession,
+    public func urlSession(_ session: URLSession,
                     webSocketTask: URLSessionWebSocketTask,
                     didOpenWithProtocol protocol: String?) {
         debug(.websocket, "session opened")
@@ -58,7 +57,7 @@ final class WebSocketController: NSObject, URLSessionWebSocketDelegate {
         }
     }
     
-    func urlSession(_ session: URLSession,
+    public func urlSession(_ session: URLSession,
                     webSocketTask: URLSessionWebSocketTask,
                     didCloseWith closeCode: URLSessionWebSocketTask.CloseCode,
                     reason: Data?) {

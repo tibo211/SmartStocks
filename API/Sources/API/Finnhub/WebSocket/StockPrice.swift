@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct StockPriceResults: Decodable {
-    let data: [StockPrice]
+public struct StockPriceResults: Decodable {
+    public let data: [StockPrice]
 }
 
- struct StockPrice: Decodable {
-    let symbol: String
-    let price: Double
+ public struct StockPrice: Decodable {
+    public let symbol: String
+    public let price: Double
     
     enum CodingKeys: String, CodingKey {
         case symbol = "s"
