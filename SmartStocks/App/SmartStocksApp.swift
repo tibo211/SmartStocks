@@ -17,6 +17,16 @@ struct SmartStocksApp: App {
                 WatchlistView(searchController: searchController, model: WatchlistViewModel())
                     .searchable(text: $searchController.query)
             }
+            #if os(iOS)
+            .settingsTab()
+            #endif
         }
+        
+        #if os(macOS)
+        Settings {
+            SettingsView()
+                .frame(minWidth: 400, minHeight: 300)
+        }
+        #endif
     }
 }

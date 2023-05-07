@@ -12,6 +12,8 @@
 		BB8752F62A07F64E00F523E1 /* Task+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8752F52A07F64E00F523E1 /* Task+Extensions.swift */; };
 		BB8752F82A07FA1800F523E1 /* AwaitAndCatchModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8752F72A07FA1800F523E1 /* AwaitAndCatchModifier.swift */; };
 		BB8752FA2A0812DB00F523E1 /* SetContentBackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8752F92A0812DB00F523E1 /* SetContentBackgroundModifier.swift */; };
+		BB8752FD2A08199E00F523E1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8752FC2A08199E00F523E1 /* SettingsView.swift */; };
+		BB8753012A081B0B00F523E1 /* SettingsTabModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8753002A081B0B00F523E1 /* SettingsTabModifier.swift */; };
 		BBA3380C2A00391F0070F91E /* SmartStocksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3380B2A00391F0070F91E /* SmartStocksApp.swift */; };
 		BBA338102A0039210070F91E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBA3380F2A0039210070F91E /* Assets.xcassets */; };
 		BBA338142A0039210070F91E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBA338132A0039210070F91E /* Preview Assets.xcassets */; };
@@ -38,6 +40,8 @@
 		BB8752F52A07F64E00F523E1 /* Task+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Extensions.swift"; sourceTree = "<group>"; };
 		BB8752F72A07FA1800F523E1 /* AwaitAndCatchModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwaitAndCatchModifier.swift; sourceTree = "<group>"; };
 		BB8752F92A0812DB00F523E1 /* SetContentBackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetContentBackgroundModifier.swift; sourceTree = "<group>"; };
+		BB8752FC2A08199E00F523E1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		BB8753002A081B0B00F523E1 /* SettingsTabModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabModifier.swift; sourceTree = "<group>"; };
 		BBA338082A00391F0070F91E /* SmartStocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartStocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBA3380B2A00391F0070F91E /* SmartStocksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartStocksApp.swift; sourceTree = "<group>"; };
 		BBA3380F2A0039210070F91E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB8752FB2A08198900F523E1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BB8752FC2A08199E00F523E1 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		BBA337FF2A00391F0070F91E = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +136,7 @@
 		BBA338212A00AC430070F91E /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				BB8752FB2A08198900F523E1 /* Settings */,
 				BBA338222A00AC4B0070F91E /* Watchlist */,
 				BBA3382E2A0145290070F91E /* CompanyDetails */,
 			);
@@ -168,6 +181,7 @@
 				BB8752F72A07FA1800F523E1 /* AwaitAndCatchModifier.swift */,
 				BB8752F12A07F34A00F523E1 /* ErrorAlertModifier.swift */,
 				BB8752F92A0812DB00F523E1 /* SetContentBackgroundModifier.swift */,
+				BB8753002A081B0B00F523E1 /* SettingsTabModifier.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -280,6 +294,8 @@
 				BBA338262A00AC7F0070F91E /* WatchlistViewModel.swift in Sources */,
 				BB8752FA2A0812DB00F523E1 /* SetContentBackgroundModifier.swift in Sources */,
 				BBA3385C2A02CBB40070F91E /* SearchController.swift in Sources */,
+				BB8753012A081B0B00F523E1 /* SettingsTabModifier.swift in Sources */,
+				BB8752FD2A08199E00F523E1 /* SettingsView.swift in Sources */,
 				BB8752F22A07F34A00F523E1 /* ErrorAlertModifier.swift in Sources */,
 				BBBC188E2A048AAD00ACE767 /* WatchlistRow.swift in Sources */,
 				BBA3382B2A00BBBB0070F91E /* PreviewStocksRepository.swift in Sources */,
