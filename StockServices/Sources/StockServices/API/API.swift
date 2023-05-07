@@ -30,11 +30,11 @@ enum API {
 
 extension API {
     struct Finnhub {
-        fileprivate let apiKey = "ch844ahr01qhapm5k2tgch844ahr01qhapm5k2u0"
+        static var APIKey: String { StockServices.user.finnhubAPIKey }
         fileprivate let basePath = "https://finnhub.io/api/v1/"
         
         var webSocketURL: URL {
-            URL(string: "wss://ws.finnhub.io?token=\(apiKey)")!
+            URL(string: "wss://ws.finnhub.io?token=\(Finnhub.APIKey)")!
         }
     }
 }
@@ -52,7 +52,7 @@ extension Request {
 
     var url: URL {
         var components = URLComponents(string: API.finnhub.basePath + endpoint)!
-        let apiKeyQueryItem = URLQueryItem(name: "token", value: API.finnhub.apiKey)
+        let apiKeyQueryItem = URLQueryItem(name: "token", value: API.Finnhub.APIKey)
         components.queryItems = queryItems + [apiKeyQueryItem]
         return components.url!
     }

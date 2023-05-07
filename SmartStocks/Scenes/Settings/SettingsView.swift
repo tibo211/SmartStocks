@@ -6,19 +6,30 @@
 //
 
 import SwiftUI
+import StockServices
 
 struct SettingsView: View {
+    @State private var finnhubKey = StockServices.user.finnhubAPIKey
+    
     var body: some View {
         Form {
             Section("API keys") {
-                
+                VStack(alignment: .leading) {
+                    Text("Finnhub")
+                    TextField("API key", text: $finnhubKey)
+                }
+
+                Button("Save") {
+                    StockServices.user.finnhubAPIKey = finnhubKey
+                }
             }
         }
+        .padding()
         .navigationTitle("Settings")
     }
 }
 
-struct ettingsView_Previews: PreviewProvider {
+struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
     }
