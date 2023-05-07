@@ -9,13 +9,18 @@ import Combine
 import Foundation
 import API
 
+public typealias CompanyProfile = CompanyProfileResult
+public typealias Symbol = SymbolResult
+public typealias Quote = QuoteResult
+public typealias Candle = CandleResult
+
 // MARK: - StocksRepository protocol
 
 public protocol StocksRepository {
-    func symbolLookup(query: String) async throws -> [SymbolResult]
-    func quote(symbol: String) async throws -> QuoteResult
-    func companyProfile(symbol: String) async throws -> CompanyProfileResult
-    func stockCandles(symbol: String, from: Date, to: Date) async throws -> CandleResult
+    func symbolLookup(query: String) async throws -> [Symbol]
+    func quote(symbol: String) async throws -> Quote
+    func companyProfile(symbol: String) async throws -> CompanyProfile
+    func stockCandles(symbol: String, from: Date, to: Date) async throws -> Candle
     func subscribe(symbols: Set<String>) async throws
     var priceUpdatePublisher: AnyPublisher<[String:Double], Never> { get }
 }

@@ -8,11 +8,10 @@
 import Foundation
 import Combine
 import StockServices
-import API
 
 final class SearchController: ObservableObject {
     @Published var query = ""
-    @Published private(set) var searchResults = [SymbolResult]()
+    @Published private(set) var searchResults = [Symbol]()
     
     init() {
         $query
@@ -20,7 +19,7 @@ final class SearchController: ObservableObject {
             .debounce(for: 0.5, scheduler: DispatchQueue.global())
             .removeDuplicates()
             .map { query in
-                Future<[SymbolResult], Never> { promise in
+                Future<[Symbol], Never> { promise in
                     Task {
                         let results = try await ServiceProvider.stocksService
                             .symbolLookup(query: query)

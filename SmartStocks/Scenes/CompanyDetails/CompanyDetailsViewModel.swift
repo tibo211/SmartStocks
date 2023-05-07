@@ -7,7 +7,6 @@
 
 import Foundation
 import StockServices
-import API
 
 struct CandleData {
     let time: Date
@@ -17,7 +16,7 @@ struct CandleData {
 final class CompanyDetailsViewModel: ObservableObject {
     let symbol: String
     @Published private(set) var price: Double
-    @Published private(set) var company: CompanyProfileResult?
+    @Published private(set) var company: CompanyProfile?
     @Published private(set) var chartData: [CandleData]?
     
     var logoUrl: URL? {

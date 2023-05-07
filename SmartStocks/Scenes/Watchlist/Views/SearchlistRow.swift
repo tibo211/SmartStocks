@@ -7,10 +7,9 @@
 
 import SwiftUI
 import StockServices
-import API
 
 struct SearchlistRow: View {
-    let item: SymbolResult
+    let item: Symbol
     let action: () -> Void
 
     @Environment(\.dismissSearch) private var dismissSearch
@@ -39,6 +38,6 @@ struct SearchlistRow: View {
 
 struct SearchlistRow_Previews: PreviewProvider {
     static var previews: some View {
-        SearchlistRow(item: SymbolResult(description: "Apple Inc", symbol: "AAPL")) {}
+        SearchlistRow(item: Symbol(description: "Apple Inc", symbol: "AAPL")) {}
     }
 }
