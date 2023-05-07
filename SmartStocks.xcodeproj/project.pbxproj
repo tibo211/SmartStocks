@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB7C0BAF2A083CAE00D44CA8 /* API in Frameworks */ = {isa = PBXBuildFile; productRef = BB7C0BAE2A083CAE00D44CA8 /* API */; };
 		BB8752F22A07F34A00F523E1 /* ErrorAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8752F12A07F34A00F523E1 /* ErrorAlertModifier.swift */; };
 		BB8752F42A07F4AB00F523E1 /* Binding+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8752F32A07F4AB00F523E1 /* Binding+Extensions.swift */; };
 		BB8752F62A07F64E00F523E1 /* Task+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8752F52A07F64E00F523E1 /* Task+Extensions.swift */; };
@@ -69,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB7C0BAF2A083CAE00D44CA8 /* API in Frameworks */,
 				BBA3381D2A005E700070F91E /* StockServices in Frameworks */,
 				BBA338552A01CFC10070F91E /* SwiftSVG in Frameworks */,
 			);
@@ -233,6 +235,7 @@
 			packageProductDependencies = (
 				BBA3381C2A005E700070F91E /* StockServices */,
 				BBA338542A01CFC10070F91E /* SwiftSVG */,
+				BB7C0BAE2A083CAE00D44CA8 /* API */,
 			);
 			productName = SmartStocks;
 			productReference = BBA338082A00391F0070F91E /* SmartStocks.app */;
@@ -538,6 +541,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BB7C0BAE2A083CAE00D44CA8 /* API */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = API;
+		};
 		BBA3381C2A005E700070F91E /* StockServices */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = StockServices;

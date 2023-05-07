@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import API
 
 public struct QuoteResult: Decodable {
     public let currentPrice: Double
@@ -23,15 +22,19 @@ public struct QuoteResult: Decodable {
     }
 }
 
-extension API.Finnhub {
+public extension API.Finnhub {
     struct Quote: Request {
-        typealias Result = QuoteResult
+        public typealias Result = QuoteResult
         let symbol: String
         
-        let endpoint = "quote"
+        public let endpoint = "quote"
         
-        var queryItems: [URLQueryItem] {
+        public var queryItems: [URLQueryItem] {
             [URLQueryItem(name: "symbol", value: symbol)]
+        }
+        
+        public init(symbol: String) {
+            self.symbol = symbol
         }
     }
 }

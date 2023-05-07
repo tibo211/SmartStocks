@@ -7,6 +7,7 @@
 
 import Foundation
 import StockServices
+import API
 
 struct CandleData {
     let time: Date

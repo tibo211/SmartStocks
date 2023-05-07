@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import API
 
 public struct CandleResult: Decodable {
     public let closes: [Double]
@@ -32,23 +31,29 @@ public struct CandleResult: Decodable {
     }
 }
 
-extension API.Finnhub {
+public extension API.Finnhub {
     struct StockCandles: Request {
-        typealias Result = CandleResult
+        public typealias Result = CandleResult
         
         let symbol: String
         let from: Date
         let to: Date
         
-        let endpoint = "stock/candle"
+        public let endpoint = "stock/candle"
         
-        var queryItems: [URLQueryItem] {
+        public var queryItems: [URLQueryItem] {
             [
                 URLQueryItem(name: "symbol", value: symbol),
                 URLQueryItem(name: "resolution", value: "D"),
                 URLQueryItem(name: "from", value: String(Int(from.timeIntervalSince1970))),
                 URLQueryItem(name: "to", value: String(Int(to.timeIntervalSince1970)))
             ]
+        }
+        
+        public init(symbol: String, from: Date, to: Date) {
+            self.symbol = symbol
+            self.from = from
+            self.to = to
         }
     }
 }

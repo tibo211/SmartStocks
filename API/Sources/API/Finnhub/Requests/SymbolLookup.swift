@@ -6,10 +6,9 @@
 //
 
 import Foundation
-import API
 
-struct SymbolLookupResult: Decodable {
-    let result: [SymbolResult]
+public struct SymbolLookupResult: Decodable {
+    public let result: [SymbolResult]
 }
 
 public struct SymbolResult: Decodable {
@@ -22,18 +21,22 @@ public struct SymbolResult: Decodable {
     }
 }
 
-extension API.Finnhub {
+public extension API.Finnhub {
     struct SymbolLookup: Request {
-        typealias Result = SymbolLookupResult
+        public typealias Result = SymbolLookupResult
         
         let query: String
 
-        let endpoint = "search"
+        public let endpoint = "search"
         
-        let retry = 1
+        public let retry = 1
         
-        var queryItems: [URLQueryItem] {
+        public var queryItems: [URLQueryItem] {
             [URLQueryItem(name: "q", value: query)]
+        }
+        
+        public init(query: String) {
+            self.query = query
         }
     }
 }

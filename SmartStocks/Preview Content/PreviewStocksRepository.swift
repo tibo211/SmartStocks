@@ -8,6 +8,7 @@
 import StockServices
 import Combine
 import Foundation
+import API
 
 final class PreviewStocksRepository: StocksRepository {
     private let initalQuotes = [

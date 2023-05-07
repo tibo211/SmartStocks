@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import StockServices
+import API
 
 final class SearchController: ObservableObject {
     @Published var query = ""

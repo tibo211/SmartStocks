@@ -7,6 +7,7 @@
 
 import SwiftUI
 import StockServices
+import API
 
 struct SearchlistRow: View {
     let item: SymbolResult

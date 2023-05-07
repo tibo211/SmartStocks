@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import API
 
 public struct CompanyProfileResult: Decodable {
     public let name: String
@@ -32,8 +31,8 @@ public struct CompanyProfileResult: Decodable {
     }
 }
 
-extension API.Finnhub {
-    public struct CompanyProfile: Request {
+public extension API.Finnhub {
+    struct CompanyProfile: Request {
         public typealias Result = CompanyProfileResult
         let symbol: String
         
@@ -41,6 +40,10 @@ extension API.Finnhub {
         
         public var queryItems: [URLQueryItem] {
             [URLQueryItem(name: "symbol", value: symbol)]
+        }
+        
+        public init(symbol: String) {
+            self.symbol = symbol
         }
     }
 }
