@@ -42,6 +42,7 @@
 		BB8752F92A0812DB00F523E1 /* SetContentBackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetContentBackgroundModifier.swift; sourceTree = "<group>"; };
 		BB8752FC2A08199E00F523E1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BB8753002A081B0B00F523E1 /* SettingsTabModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabModifier.swift; sourceTree = "<group>"; };
+		BB8753022A08346800F523E1 /* API */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = API; sourceTree = "<group>"; };
 		BBA338082A00391F0070F91E /* SmartStocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartStocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBA3380B2A00391F0070F91E /* SmartStocksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartStocksApp.swift; sourceTree = "<group>"; };
 		BBA3380F2A0039210070F91E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,6 +88,7 @@
 		BBA337FF2A00391F0070F91E = {
 			isa = PBXGroup;
 			children = (
+				BB8753022A08346800F523E1 /* API */,
 				BBA3381A2A005E550070F91E /* StockServices */,
 				BBA3380A2A00391F0070F91E /* SmartStocks */,
 				BBA338092A00391F0070F91E /* Products */,
